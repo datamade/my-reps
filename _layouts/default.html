@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>
+      {% if page.title %}
+        {{page.title}} -
+      {% endif %}
+      {{site.name}}
+    </title>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if page.description %}
+      <meta content="{{ page.description }}" name='description' />
+    {% else %}
+      <meta content="{{ site.description }}" name='description' />
+    {% endif %}
+    <meta content="{{ site.name }}" name='author' />
+
+    <!-- Facebook metadata -->
+    <meta content="{{ site.name }}" property="og:site_name">
+    {% if page.title %}
+      <meta content="{{ page.title }} - {{ site.name }}" property="og:title">
+    {% else %}
+      <meta content="{{ site.name }}" property="og:title">
+    {% endif %}
+    {% if page.title %}
+      <meta content="article" property="og:type">
+    {% else %}
+      <meta content="website" property="og:type">
+    {% endif %}
+    {% if page.description %}
+      <meta content="{{ page.description }}" property="og:description">
+    {% else %}
+      <meta content="{{ site.description }}" property="og:description">
+    {% endif %}
+    {% if page.url %}
+      <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+    {% endif %}
+    {% if page.date %}
+      <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+    {% endif %}
+    {% if page.image %}
+      <meta content="{{ site.url }}/{{ page.image }}" property="og:image">
+    {% endif %}
+    {% if page.categories %}
+      {% for category in page.categories limit:1 %}
+      <meta content="{{ category }}" property="article:section">
+      {% endfor %}
+    {% endif %}
+    {% if page.tags %}
+      {% for tag in page.tags %}
+      <meta content="{{ tag }}" property="article:tag">
+      {% endfor %}
+    {% endif %}
+
+    <!-- Twitter metadata -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ site.title }}">
+    <meta name="twitter:creator" content="{{ site.title }}">
+    {% if page.title %}
+      <meta name="twitter:title" content="{{ page.title }}">
+    {% else %}
+      <meta name="twitter:title" content="{{ site.title }}">
+    {% endif %}
+    {% if page.url %}
+      <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+    {% endif %}
+    {% if page.description %}
+      <meta name="twitter:description" content="{{ page.description }}">
+    {% else %}
+      <meta name="twitter:description" content="{{ site.description }}">
+    {% endif %}
+    {% if page.image %}
+      <meta name="twitter:image:src" content="{{ site.url }}/images/{{ page.image }}">
+    {% endif %}
+
+      <link href="/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+      <link rel="stylesheet" href="/css/custom.css">
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+      <script src="/lib/modernizr-2.6.2.min.js"></script>
+      <script src="/lib/bootstrap.min.js"></script>
+      <script src="/lib/jquery.dataTables.min.js"></script>
+      <script src="/lib/jquery.dataTables.sorting.js"></script>
+      <script src="/lib/jquery.address.js"></script>
+      <script src="/lib/dataTables.bootstrap.js"></script>
+      <script src="/lib/spin.min.js" type="text/javascript"></script>
+      <script src="/lib/jquery.spin.js" type="text/javascript"></script>
+      <script src="/lib/ejs_production.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Rep lookup tool</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+      {{content}}
+    </div>
+
+    <div class="container-fluid">
+      <div class="row" id="footer">
+        <div class='col-sm-12 col-md-10 col-md-offset-1'>
+            By the <a href='#' target="_blank">People who brought you this</a> and
+            <a href='#' target="_blank">Maybe some other people</a>. Website by <a href='http://datamade.us' target="_blank">DataMade</a>.
+        </div>
+      </div>
+    </div>
+    <script src="/js/analytics_lib.js"></script>
+    <script src="/js/lookup_tool.js"></script>
+  </body>
+</html>

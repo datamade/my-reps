@@ -1,0 +1,121 @@
+---
+layout: default
+description: ""
+
+
+---
+
+<div class="row">
+    <div class='col-sm-10 col-md-offset-1'>
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" placeholder="Search for reps" id="address" name="address" >
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="address-search"><i class='fa fa-search'></i> Search </button>
+            </span>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class='col-sm-10 col-md-offset-1'>
+        <table id="federal-results" class="table table-striped" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Office</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Social</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <table id="state-results" class="table table-striped" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Office</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Social</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <table id="county-results" class="table table-striped" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Office</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Social</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <table id="local-results" class="table table-striped" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Office</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Social</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+<script id="tableGuts" type="text/EJS">
+    <tr>
+        <td><%= person.name %></td>
+        <td><%= office.name %></td>
+        <% if (phones){ %>
+            <td>
+            <% $.each(phones, function(i, phone){ %>
+                <% if ((i + 1) < phones.length){ %>
+                    <%= phone %><br />
+                <% } else { %>
+                    <%= phone %>
+                <% } %>
+            <% }) %>
+            </td>
+        <% } else { %>
+            <td></td>
+        <% } %>
+        <% if (emails){ %>
+            <td>
+            <% $.each(emails, function(i, email){ %>
+                <% if ((i + 1) < emails.length){ %>
+                    <%= email %><br />
+                <% } else { %>
+                    <%= email %>
+                <% } %>
+            <% }) %>
+            </td>
+        <% } else { %>
+            <td></td>
+        <% } %>
+        <% if (channels){ %>
+            <td>
+            <% $.each(channels, function(i, channel){ %>
+                <% if ((i + 1) < channels.length){ %>
+                    <i class="fa fa-<%= channel.icon %>"> </i>
+                    <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a><br />
+                <% } else { %>
+                    <i class="fa fa-<%= channel.icon %>"> </i>
+                    <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a>
+                <% } %>
+            <% }) %>
+            </td>
+        <% } else { %>
+            <td></td>
+        <% } %>
+    </tr>
+</script>
