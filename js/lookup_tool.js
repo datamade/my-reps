@@ -2,6 +2,15 @@
 var API_KEY = 'AIzaSyA-CGHzz9lN_tkp1Uego2dqRG_1XBPlCJA';
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
 
+// parsing out division IDs
+var federal_pattern = "ocd-division/country:us";
+
+// this is still broken
+var state_pattern = /ocd-division\/country:us\/state:(\D{2}$)(\/sldl|\/sldu)?/;
+var county_pattern = /ocd-division\/country:us\/state:\D{2}\/county:\D+/;
+
+var federal_offices = ['United States Senate', 'United States House of Representatives']
+
 var social_icon_lookup = {
     'YouTube': 'youtube',
     'Facebook': 'facebook',
@@ -80,10 +89,7 @@ function addressSearch() {
                             info['emails'] = person.emails;
                         }
 
-                        var state_pattern = /ocd-division\/country:us\/state:(?=\D{2}$)/;
-                        var county_pattern = /ocd-division\/country:us\/state:\D{2}\/county:\D+/
-
-                        if(division_id == "ocd-division/country:us") {
+                        if(division_id == federal_pattern) {
                             federal_people.push(info);
                         } else if (state_pattern.test(division_id)) {
                             state_people.push(info);
