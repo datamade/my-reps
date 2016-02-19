@@ -6,9 +6,9 @@ description: ""
 ---
 
 <div class="row">
-    <div class='col-sm-10 col-md-offset-1'>
+    <div class='col-sm-10 col-sm-offset-1'>
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="Search for reps" id="address" name="address" >
+            <input type="text" class="form-control" placeholder="Enter your address to find who represents you" id="address" name="address" >
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit" id="address-search"><i class='fa fa-search'></i> Search </button>
             </span>
@@ -18,53 +18,64 @@ description: ""
 <br />
 <div class="row">
     <div class='col-sm-10 col-md-offset-1'>
+        <h3>Federal</h3>
         <table id="federal-results" class="table table-striped" style="display:none;">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Office</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Social</th>
+                    <th>Social media</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
+
+        <h3>State</h3>
         <table id="state-results" class="table table-striped" style="display:none;">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Office</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Social</th>
+                    <th>Social media</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
+
+        <h3>County</h3>
         <table id="county-results" class="table table-striped" style="display:none;">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Office</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Social</th>
+                    <th>Social media</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
+
+        <h3>Local</h3>
         <table id="local-results" class="table table-striped" style="display:none;">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Office</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Social</th>
+                    <th>Social media</th>
                     <th></th>
                 </tr>
             </thead>
@@ -73,49 +84,95 @@ description: ""
     </div>
 </div>
 <script id="tableGuts" type="text/EJS">
-    <tr>
-        <td><%= person.name %></td>
-        <td><%= office.name %></td>
-        <% if (phones){ %>
+    <% $.each(people, function(i, info){ %>
+        <tr>
             <td>
-            <% $.each(phones, function(i, phone){ %>
-                <% if ((i + 1) < phones.length){ %>
-                    <%= phone %><br />
+                <% if (info.person.photoUrl) { %>
+                    <img class="img-rounded headshot" src="<%= info.person.photoUrl %>" alt="<%= info.person.name %>" title="<%= info.person.name %>" />
                 <% } else { %>
-                    <%= phone %>
+
                 <% } %>
-            <% }) %>
             </td>
-        <% } else { %>
-            <td></td>
-        <% } %>
-        <% if (emails){ %>
-            <td>
-            <% $.each(emails, function(i, email){ %>
-                <% if ((i + 1) < emails.length){ %>
-                    <%= email %><br />
-                <% } else { %>
-                    <%= email %>
-                <% } %>
-            <% }) %>
-            </td>
-        <% } else { %>
-            <td></td>
-        <% } %>
-        <% if (channels){ %>
-            <td>
-            <% $.each(channels, function(i, channel){ %>
-                <% if ((i + 1) < channels.length){ %>
-                    <i class="fa fa-<%= channel.icon %>"> </i>
-                    <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a><br />
-                <% } else { %>
-                    <i class="fa fa-<%= channel.icon %>"> </i>
-                    <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a>
-                <% } %>
-            <% }) %>
-            </td>
-        <% } else { %>
-            <td></td>
-        <% } %>
-    </tr>
+            <td><%= info.person.name %><br /><%= info.division_id %></td>
+            <td><%= info.office.name %></td>
+            <% if (info.phones){ %>
+                <td>
+                <% $.each(info.phones, function(i, phone){ %>
+                    <% if ((i + 1) < info.phones.length){ %>
+                        <%= phone %><br />
+                    <% } else { %>
+                        <%= phone %>
+                    <% } %>
+                <% }) %>
+                </td>
+            <% } else { %>
+                <td></td>
+            <% } %>
+            <% if (info.emails){ %>
+                <td>
+                <% $.each(info.emails, function(i, email){ %>
+                    <% if ((i + 1) < info.emails.length){ %>
+                        <%= email %><br />
+                    <% } else { %>
+                        <%= email %>
+                    <% } %>
+                <% }) %>
+                </td>
+            <% } else { %>
+                <td></td>
+            <% } %>
+            <% if (info.channels){ %>
+                <td>
+                <% $.each(info.channels, function(i, channel){ %>
+                    <% if ((i + 1) < info.channels.length){ %>
+                        <i class="fa fa-fw fa-<%= channel.icon %>"> </i>
+                        <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a><br />
+                    <% } else { %>
+                        <i class="fa fa-fw fa-<%= channel.icon %>"> </i>
+                        <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a>
+                    <% } %>
+                <% }) %>
+                </td>
+            <% } else { %>
+                <td></td>
+            <% } %>
+        </tr>
+    <% }) %>
+</script>
+
+<script src="/js/lookup_tool.js"></script>
+<script type='text/javascript'>
+  //<![CDATA[
+
+    $(function() {
+
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'));
+
+      $("#address").val(convertToPlainString($.address.parameter('address')));
+      if ($("#address").val())
+        addressSearch();
+      
+      $('#address-search').click(function(){
+        addressSearch();
+      });
+      
+      // $('#find_me').click(function(){
+      //   myMap.findMe(); 
+      //   return false;
+      // });
+      
+      // $('#reset').click(function(){
+      //   myMap.reset(); 
+      //   return false;
+      // });
+      
+      $(":text").keydown(function(e){
+          var key =  e.keyCode ? e.keyCode : e.which;
+          if(key === 13) {
+              $('#address-search').click();
+              return false;
+          }
+      });
+    });
+  //]]>
 </script>
