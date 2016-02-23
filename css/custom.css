@@ -1,3 +1,11 @@
+body {
+    font-size: 16px;
+}
+
 .headshot {
     max-width: 50px;
+}
+
+.main-content {
+    height: 400px;
 }

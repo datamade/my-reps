@@ -7,80 +7,95 @@ description: ""
 
 <div class="row">
     <div class='col-sm-10 col-sm-offset-1'>
-        <div class="input-group input-group-lg">
+        <br />
+        <br />
+        <br />
+        <p class='lead text-center'>Find out who your representatives are and get them to <em>do something</em></p>
+
+        <br />
+        <br />
+
+        <div class="input-group input-group-lg col-sm-8 col-sm-offset-2">
             <input type="text" class="form-control" placeholder="Enter your address to find who represents you" id="address" name="address" >
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit" id="address-search"><i class='fa fa-search'></i> Search </button>
             </span>
         </div>
+
+        <br />
+        <br />
     </div>
 </div>
-<br />
 <div class="row">
     <div class='col-sm-10 col-md-offset-1'>
-        <h3>Federal</h3>
-        <table id="federal-results" class="table table-striped" style="display:none;">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Office</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Social media</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <div id='response-container' style="display:none;">
+            <h3 class='text-center'>United States Federal Government</h3>
+            <table id="federal-results" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Office</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Social media</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
 
-        <h3>State</h3>
-        <table id="state-results" class="table table-striped" style="display:none;">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Office</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Social media</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+            <br />
+            <h3 class='text-center'>State</h3>
+            <table id="state-results" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Office</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Social media</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
 
-        <h3>County</h3>
-        <table id="county-results" class="table table-striped" style="display:none;">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Office</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Social media</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+            <br />
+            <h3 class='text-center'>County</h3>
+            <table id="county-results" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Office</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Social media</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
 
-        <h3>Local</h3>
-        <table id="local-results" class="table table-striped" style="display:none;">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Office</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Social media</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+            <br />
+            <h3 class='text-center'>Local</h3>
+            <table id="local-results" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Office</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Social media</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script id="tableGuts" type="text/EJS">
@@ -90,10 +105,12 @@ description: ""
                 <% if (info.person.photoUrl) { %>
                     <img class="img-rounded headshot" src="<%= info.person.photoUrl %>" alt="<%= info.person.name %>" title="<%= info.person.name %>" />
                 <% } else { %>
-
+                    <img class="img-rounded headshot" src="/images/blank-person.jpg" alt="<%= info.person.name %>" title="<%= info.person.name %>" />
                 <% } %>
             </td>
-            <td><%= info.person.name %><br /><%= info.division_id %></td>
+            <td>
+                <%= info.person.name %>
+            </td>
             <td><%= info.office.name %></td>
             <% if (info.phones){ %>
                 <td>
@@ -124,13 +141,7 @@ description: ""
             <% if (info.channels){ %>
                 <td>
                 <% $.each(info.channels, function(i, channel){ %>
-                    <% if ((i + 1) < info.channels.length){ %>
-                        <i class="fa fa-fw fa-<%= channel.icon %>"> </i>
-                        <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a><br />
-                    <% } else { %>
-                        <i class="fa fa-fw fa-<%= channel.icon %>"> </i>
-                        <a href="<%= channel.link %>" target="_blank"> <%= channel.id %></a>
-                    <% } %>
+                    <a href="<%= channel.link %>" target="_blank"><i class="fa fa-fw fa-<%= channel.icon %>"> </i></a>
                 <% }) %>
                 </td>
             <% } else { %>
