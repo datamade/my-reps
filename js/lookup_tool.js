@@ -52,7 +52,7 @@ function addressSearch() {
         // console.log(data);
 
         $.each(divisions, function(division_id, division){
-            // console.log(division.name);
+            console.log(division.name);
             if (typeof division.officeIndices !== 'undefined'){
                 
                 $.each(division.officeIndices, function(i, office){
@@ -62,6 +62,7 @@ function addressSearch() {
                         var info = {
                             'person': null,
                             'office': office_name,
+                            'address': null,
                             'channels': null,
                             'phones': null,
                             'urls': null,
@@ -69,8 +70,7 @@ function addressSearch() {
                             'division_id': division_id
                         };
 
-
-                        // console.log(officials[official])
+                        console.log(officials[official])
                         var person = officials[official];
                         info['person'] = person;
 
@@ -84,6 +84,9 @@ function addressSearch() {
                                 }
                             });
                             info['channels'] = channels;
+                        }
+                        if (typeof person.address !== 'undefined'){
+                            info['address'] = person.address;
                         }
                         if (typeof person.phones !== 'undefined'){
                             info['phones'] = person.phones;
@@ -149,6 +152,21 @@ function checkCounty(division_id){
         return true;
     else
         return false; 
+}
+
+function formatParty(party) {
+    if (party) {
+        var party_letter = party.charAt(0);
+        var css_class ='label-ind';
+        if (party_letter == 'D')
+            css_class ='label-dem';
+        else if (party_letter == 'R')
+            css_class ='label-rep';
+
+        return "(<span class='" + css_class + "'>" + party_letter + "</span>)";
+    }
+    else
+        return '';
 }
 
 //converts a slug or query string in to readable text

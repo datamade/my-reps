@@ -9,3 +9,15 @@ body {
 .main-content {
     height: 400px;
 }
+
+.label-dem {
+    color: #0294C7;
+}
+
+.label-rep {
+    color: #D1220E;
+}
+
+.label-ind {
+    color: #418B07;
+}

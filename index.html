@@ -36,9 +36,9 @@ description: ""
                         <th></th>
                         <th>Name</th>
                         <th><i class='fa fa-institution'></i> Office</th>
-                        <th><i class='fa fa-phone'></i> Phone</th>
-                        <th><i class='fa fa-comment-o'></i> Social media</th>
-                        <th></th>
+                        <th><i class='fa fa-map-marker'></i> Address</th>
+                        <th><i class='fa fa-bullhorn'></i> Contact</th>
+                        <th><i class='fa fa-external-link'></i> Links</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -51,11 +51,10 @@ description: ""
                     <tr>
                         <th></th>
                         <th>Name</th>
-                        <th>Office</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Social media</th>
-                        <th></th>
+                        <th><i class='fa fa-institution'></i> Office</th>
+                        <th><i class='fa fa-map-marker'></i> Address</th>
+                        <th><i class='fa fa-bullhorn'></i> Contact</th>
+                        <th><i class='fa fa-external-link'></i> Links</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -69,11 +68,10 @@ description: ""
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Office</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Social media</th>
-                            <th></th>
+                            <th><i class='fa fa-institution'></i> Office</th>
+                            <th><i class='fa fa-map-marker'></i> Address</th>
+                            <th><i class='fa fa-bullhorn'></i> Contact</th>
+                            <th><i class='fa fa-external-link'></i> Links</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -88,11 +86,10 @@ description: ""
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Office</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Social media</th>
-                            <th></th>
+                            <th><i class='fa fa-institution'></i> Office</th>
+                            <th><i class='fa fa-map-marker'></i> Address</th>
+                            <th><i class='fa fa-bullhorn'></i> Contact</th>
+                            <th><i class='fa fa-external-link'></i> Links</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -112,37 +109,66 @@ description: ""
                 <% } %>
             </td>
             <td>
-                <%= info.person.name %>
+                <%= info.person.name %> <%= formatParty(info.person.party) %>
             </td>
             <td><%= info.office.name %></td>
-            <% if (info.phones){ %>
+            <td>
+                <% if (info.address) { %>
+                    <% $.each(info.address, function(i, addr){ %>
+                        <p>
+                        <%= addr.line1 %><br />
+                        <% if (addr.line2) { %>
+                            <%= addr.line2 %><br />
+                        <% } %>
+                        <% if (addr.line3) { %>
+                            <%= addr.line3 %><br />
+                        <% } %>
+                        <%= addr.city %>, <%= addr.state %> <%= addr.zip %>
+                        </p>
+                    <% }) %>
+                <% } %>
+            </td>
+            <% if (info.phones || info.emails){ %>
                 <td>
-                <% $.each(info.phones, function(i, phone){ %>
-                    <% if ((i + 1) < info.phones.length){ %>
-                        <%= phone %><br />
-                    <% } else { %>
-                        <%= phone %>
-                    <% } %>
-                <% }) %>
+
+                <% if (info.phones){ %>
+                    <% $.each(info.phones, function(i, phone){ %>
+                        <% if ((i + 1) < info.phones.length){ %>
+                            <i class='fa fa-fw fa-phone'></i> <%= phone %><br />
+                        <% } else { %>
+                            <i class='fa fa-fw fa-phone'></i> <%= phone %>
+                        <% } %>
+                    <% }) %>
+                    <br />
+                <% } %>
+
+                <% if (info.emails){ %>
+                    <% $.each(info.emails, function(i, email){ %>
+                        <% if ((i + 1) < info.emails.length){ %>
+                            <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a><br />
+                        <% } else { %>
+                            <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a>
+                        <% } %>
+                    <% }) %>
+                <% } %>
+
                 </td>
             <% } else { %>
                 <td></td>
             <% } %>
-            <% if (info.emails){ %>
+            <% if (info.channels || info.urls){ %>
                 <td>
-                <% $.each(info.emails, function(i, email){ %>
-                    <% if ((i + 1) < info.emails.length){ %>
-                        <a href='mailto:<%= email %>'><%= email %></a><br />
-                    <% } else { %>
-                        <a href='mailto:<%= email %>'><%= email %></a>
-                    <% } %>
-                <% }) %>
-            <% } %>
-            <% if (info.channels){ %>
-                <td>
+
+                <% if (info.channels){ %>
                 <% $.each(info.channels, function(i, channel){ %>
                     <a href="<%= channel.link %>" target="_blank"><i class="fa fa-fw fa-<%= channel.icon %>"> </i></a>
                 <% }) %>
+                <% } %>
+                <% if (info.urls){ %>
+                    <% $.each(info.urls, function(i, url){ %>
+                        <a href="<%= url %>" target="_blank"><i class="fa fa-fw fa-globe"> </i></a>
+                    <% }) %>
+                <% } %>
                 </td>
             <% } else { %>
                 <td></td>
