@@ -156,6 +156,9 @@ function checkCounty(division_id){
 
 function formatParty(party) {
     if (party) {
+        if (party == 'Unknown')
+            return '';
+
         var party_letter = party.charAt(0);
         var css_class ='label-ind';
         if (party_letter == 'D')
@@ -167,6 +170,11 @@ function formatParty(party) {
     }
     else
         return '';
+}
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
 //converts a slug or query string in to readable text

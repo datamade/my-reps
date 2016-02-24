@@ -116,20 +116,20 @@ description: ""
                 <% if (info.address) { %>
                     <% $.each(info.address, function(i, addr){ %>
                         <p>
-                        <%= addr.line1 %><br />
+                        <%= toTitleCase(addr.line1) %><br />
                         <% if (addr.line2) { %>
-                            <%= addr.line2 %><br />
+                            <%= toTitleCase(addr.line2) %><br />
                         <% } %>
                         <% if (addr.line3) { %>
-                            <%= addr.line3 %><br />
+                            <%= toTitleCase(addr.line3) %><br />
                         <% } %>
-                        <%= addr.city %>, <%= addr.state %> <%= addr.zip %>
+                        <%= toTitleCase(addr.city) %>, <%= addr.state.toUpperCase() %> <%= addr.zip %>
                         </p>
                     <% }) %>
                 <% } %>
             </td>
             <% if (info.phones || info.emails){ %>
-                <td>
+                <td class='nowrap'>
 
                 <% if (info.phones){ %>
                     <% $.each(info.phones, function(i, phone){ %>
