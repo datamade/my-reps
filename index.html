@@ -35,10 +35,9 @@ description: ""
                     <tr>
                         <th></th>
                         <th>Name</th>
-                        <th>Office</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Social media</th>
+                        <th><i class='fa fa-institution'></i> Office</th>
+                        <th><i class='fa fa-phone'></i> Phone</th>
+                        <th><i class='fa fa-comment-o'></i> Social media</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -62,39 +61,43 @@ description: ""
                 <tbody></tbody>
             </table>
 
-            <br />
-            <h3 class='text-center'>County</h3>
-            <table id="county-results" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Office</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Social media</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div id='county-container'>
+                <br />
+                <h3 class='text-center'>County</h3>
+                <table id="county-results" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Office</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Social media</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
 
-            <br />
-            <h3 class='text-center'>Local</h3>
-            <table id="local-results" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Office</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Social media</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div id='local-container'>
+                <br />
+                <h3 class='text-center'>Local</h3>
+                <table id="local-results" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Office</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Social media</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -129,14 +132,11 @@ description: ""
                 <td>
                 <% $.each(info.emails, function(i, email){ %>
                     <% if ((i + 1) < info.emails.length){ %>
-                        <%= email %><br />
+                        <a href='mailto:<%= email %>'><%= email %></a><br />
                     <% } else { %>
-                        <%= email %>
+                        <a href='mailto:<%= email %>'><%= email %></a>
                     <% } %>
                 <% }) %>
-                </td>
-            <% } else { %>
-                <td></td>
             <% } %>
             <% if (info.channels){ %>
                 <td>

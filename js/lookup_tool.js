@@ -115,7 +115,13 @@ function addressSearch() {
         
         $('#federal-results tbody').append(template.render({people: federal_people}));
         $('#state-results tbody').append(template.render({people: state_people}));
+        
+        if (county_people.length == 0)
+            $('#county-container').hide();
         $('#county-results tbody').append(template.render({people: county_people}));
+        
+        if (local_people.length == 0)
+            $('#local-container').hide();
         $('#local-results tbody').append(template.render({people: local_people}));
         $('#response-container').show();
     });
