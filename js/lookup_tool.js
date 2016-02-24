@@ -8,6 +8,8 @@ var state_pattern = /ocd-division\/country:us\/state:(\D{2}$)/;
 var cd_pattern = /ocd-division\/country:us\/state:(\D{2})\/cd:/;
 var sl_pattern = /ocd-division\/country:us\/state:(\D{2})\/(sldl:|sldu:)/;
 var county_pattern = /ocd-division\/country:us\/state:\D{2}\/county:\D+/;
+var local_pattern = /ocd-division\/country:us\/state:\D{2}\/place:\D+/;
+var district_pattern = /ocd-division\/country:us\/district:\D+/;
 
 var federal_offices = ['United States Senate', 'United States House of Representatives']
 
@@ -50,83 +52,129 @@ function addressSearch() {
         var local_people = [];
 
         // console.log(data);
+        // console.log(divisions);
 
-        $.each(divisions, function(division_id, division){
-            console.log(division.name);
-            if (typeof division.officeIndices !== 'undefined'){
-                
-                $.each(division.officeIndices, function(i, office){
-                    var office_name = offices[office];
+        if (divisions === undefined) {
+            $("#no-response-container").show();
+            $("#response-container").hide();
+        }
+        else {
+            setFoundDivisions(divisions);
 
-                    $.each(offices[office]['officialIndices'], function(i, official){
-                        var info = {
-                            'person': null,
-                            'office': office_name,
-                            'address': null,
-                            'channels': null,
-                            'phones': null,
-                            'urls': null,
-                            'emails': null,
-                            'division_id': division_id
-                        };
+            $.each(divisions, function(division_id, division){
+                // console.log(division.name);
+                if (typeof division.officeIndices !== 'undefined'){
+                    
+                    $.each(division.officeIndices, function(i, office){
+                        var office_name = offices[office];
 
-                        console.log(officials[official])
-                        var person = officials[official];
-                        info['person'] = person;
+                        $.each(offices[office]['officialIndices'], function(i, official){
+                            var info = {
+                                'person': null,
+                                'office': office_name,
+                                'address': null,
+                                'channels': null,
+                                'phones': null,
+                                'urls': null,
+                                'emails': null,
+                                'division_id': division_id
+                            };
 
-                        if (typeof person.channels !== 'undefined'){
-                            var channels = [];
-                            $.each(person.channels, function(i, channel){
-                                if (channel.type != 'GooglePlus' && channel.type != 'YouTube') {
-                                    channel['icon'] = social_icon_lookup[channel.type];
-                                    channel['link'] = social_link_lookup[channel.type] + channel['id'];
-                                    channels.push(channel);
-                                }
-                            });
-                            info['channels'] = channels;
-                        }
-                        if (typeof person.address !== 'undefined'){
-                            info['address'] = person.address;
-                        }
-                        if (typeof person.phones !== 'undefined'){
-                            info['phones'] = person.phones;
-                        }
-                        if (typeof person.urls !== 'undefined'){
-                            info['urls'] = person.urls;
-                        }
-                        if (typeof person.emails !== 'undefined'){
-                            info['emails'] = person.emails;
-                        }
+                            // console.log(officials[official])
+                            var person = officials[official];
+                            info['person'] = person;
 
-                        if(checkFederal(division_id, office_name)) {
-                            federal_people.push(info);
-                        } else if (checkState(division_id)) {
-                            state_people.push(info);
-                        } else if (checkCounty(division_id)){
-                            county_people.push(info);
-                        } else {
-                            local_people.push(info);
-                        }
+                            if (typeof person.channels !== 'undefined'){
+                                var channels = [];
+                                $.each(person.channels, function(i, channel){
+                                    if (channel.type != 'GooglePlus' && channel.type != 'YouTube') {
+                                        channel['icon'] = social_icon_lookup[channel.type];
+                                        channel['link'] = social_link_lookup[channel.type] + channel['id'];
+                                        channels.push(channel);
+                                    }
+                                });
+                                info['channels'] = channels;
+                            }
+                            if (typeof person.address !== 'undefined'){
+                                info['address'] = person.address;
+                            }
+                            if (typeof person.phones !== 'undefined'){
+                                info['phones'] = person.phones;
+                            }
+                            if (typeof person.urls !== 'undefined'){
+                                info['urls'] = person.urls;
+                            }
+                            if (typeof person.emails !== 'undefined'){
+                                info['emails'] = person.emails;
+                            }
+
+                            if(checkFederal(division_id, office_name)) {
+                                federal_people.push(info);
+                            } else if (checkState(division_id)) {
+                                state_people.push(info);
+                            } else if (checkCounty(division_id)){
+                                county_people.push(info);
+                            } else {
+                                local_people.push(info);
+                            }
+
+                        });
 
                     });
+                }
+            });
 
-                });
-            }
-        });
+            var template = new EJS({'text': $('#tableGuts').html()});
+            
+            $('#federal-results tbody').append(template.render({people: federal_people}));
+            
+            if (state_people.length == 0)
+                $('#state-container').hide();
+            $('#state-results tbody').append(template.render({people: state_people}));
+            
+            if (county_people.length == 0)
+                $('#county-container').hide();
+            $('#county-results tbody').append(template.render({people: county_people}));
+            
+            if (local_people.length == 0)
+                $('#local-container').hide();
+            $('#local-results tbody').append(template.render({people: local_people}));
+            
+            $('#response-container').show();
+            $("#no-response-container").hide();
+        }
+    });
+}
 
-        var template = new EJS({'text': $('#tableGuts').html()});
-        
-        $('#federal-results tbody').append(template.render({people: federal_people}));
-        $('#state-results tbody').append(template.render({people: state_people}));
-        
-        if (county_people.length == 0)
-            $('#county-container').hide();
-        $('#county-results tbody').append(template.render({people: county_people}));
-        
-        if (local_people.length == 0)
-            $('#local-container').hide();
-        $('#local-results tbody').append(template.render({people: local_people}));
-        $('#response-container').show();
+$("#results-nav a").click(function(e) {
+    e.preventDefault();
+    var scroll_to = $($("#" + e.target.id).attr('href'));
+    $('html, body').animate({
+        scrollTop: scroll_to.offset().top
+    }, 1000);
+});
+
+function setFoundDivisions(divisions){
+    
+    // reset the labels
+    $("#state-name-nav").html('');
+    $("#county-name-nav").html('');
+    $("#local-name-nav").html('');
+
+    // console.log(divisions)
+    $.each(divisions, function(division_id, division){
+        if (state_pattern.test(division_id)) {
+            $("#state-name").html(division.name);
+            $("#state-name-nav").html(division.name);
+        }
+        if (county_pattern.test(division_id)) {
+            $("#county-name").html(division.name);
+            $("#county-name-nav").html(division.name);
+        }
+        if (local_pattern.test(division_id) || district_pattern.test(division_id)) {
+            $("#local-name").html(division.name);
+            $("#local-name-nav").html(division.name);
+        }
     });
 }
 

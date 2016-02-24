@@ -1,5 +1,33 @@
+@font-face {
+     font-family: 'StateFaceRegular';
+     src: url('/fonts/stateface-regular-webfont.eot');
+     src: url('/fonts/stateface-regular-webfont.eot?#iefix') format('embedded-opentype'),
+          url('/fonts/stateface-regular-webfont.woff') format('woff'),
+          url('/fonts/stateface-regular-webfont.ttf') format('truetype'),
+          url('/fonts/stateface-regular-webfont.svg#StateFaceRegular') format('svg');
+     font-weight: normal;
+     font-style: normal;
+ }
+
 body {
     font-size: 16px;
+}
+
+/* center the nav pills */
+.centered-pills {
+    text-align: center
+}
+.centered-pills ul.nav-pills {
+    display: inline-block
+}
+.centered-pills li {
+    display: inline
+}
+.centered-pills a {
+    float: left
+}
+* html .centered-pills ul.nav-pills, *+html .centered-pills ul.nav-pills {
+    display: inline
 }
 
 .headshot {

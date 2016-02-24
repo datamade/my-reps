@@ -28,8 +28,23 @@ description: ""
 </div>
 <div class="row">
     <div class='col-sm-10 col-md-offset-1'>
+        <div id='no-response-container' class='text-center' style="display:none;">
+            <h1><i class='fa fa-exclamation-triangle'></i> </h1>
+            <h3>No representatives found</h3>
+            <p>We couldn't find any representatives for that address. Please try again.</p>
+        </div>
         <div id='response-container' style="display:none;">
-            <h3 class='text-center'>United States Federal Government</h3>
+
+            <div class="centered-pills">
+                <ul class="nav nav-pills" id='results-nav'>
+                  <li role="presentation"><a href="#federal-name">Federal</a></li>
+                  <li role="presentation"><a id="state-name-nav" href="#state-name"></a></li>
+                  <li role="presentation"><a id="county-name-nav" href="#county-name"></a></li>
+                  <li role="presentation"><a id="local-name-nav" href="#local-name"></a></li>
+                </ul>
+            </div>
+
+            <h3 id='federal-name' class='text-center'>United States Federal Government</h3>
             <table id="federal-results" class="table table-striped">
                 <thead>
                     <tr>
@@ -44,25 +59,27 @@ description: ""
                 <tbody></tbody>
             </table>
 
-            <br />
-            <h3 class='text-center'>State</h3>
-            <table id="state-results" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th><i class='fa fa-institution'></i> Office</th>
-                        <th><i class='fa fa-map-marker'></i> Address</th>
-                        <th><i class='fa fa-bullhorn'></i> Contact</th>
-                        <th><i class='fa fa-external-link'></i> Links</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div id='state-container'>
+                <br />
+                <h3 class='text-center' id="state-name"></h3>
+                <table id="state-results" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th><i class='fa fa-institution'></i> Office</th>
+                            <th><i class='fa fa-map-marker'></i> Address</th>
+                            <th><i class='fa fa-bullhorn'></i> Contact</th>
+                            <th><i class='fa fa-external-link'></i> Links</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
 
             <div id='county-container'>
                 <br />
-                <h3 class='text-center'>County</h3>
+                <h3 class='text-center' id="county-name"></h3>
                 <table id="county-results" class="table table-striped">
                     <thead>
                         <tr>
@@ -80,7 +97,7 @@ description: ""
 
             <div id='local-container'>
                 <br />
-                <h3 class='text-center'>Local</h3>
+                <h3 class='text-center' id="local-name"></h3>
                 <table id="local-results" class="table table-striped">
                     <thead>
                         <tr>
