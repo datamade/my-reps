@@ -157,23 +157,26 @@ $("#results-nav a").click(function(e) {
 function setFoundDivisions(divisions){
     
     // reset the labels
-    $("#state-name-nav").html('');
-    $("#county-name-nav").html('');
-    $("#local-name-nav").html('');
+    $("#state-nav").hide();
+    $("#county-nav").hide();
+    $("#local-nav").hide();
 
     // console.log(divisions)
     $.each(divisions, function(division_id, division){
         if (state_pattern.test(division_id)) {
             $("#state-name").html(division.name);
             $("#state-name-nav").html(division.name);
+            $("#state-nav").show();
         }
         if (county_pattern.test(division_id)) {
             $("#county-name").html(division.name);
             $("#county-name-nav").html(division.name);
+            $("#county-nav").show();
         }
         if (local_pattern.test(division_id) || district_pattern.test(division_id)) {
             $("#local-name").html(division.name);
             $("#local-name-nav").html(division.name);
+            $("#local-nav").show();
         }
     });
 }

@@ -35,14 +35,24 @@ description: ""
         </div>
         <div id='response-container' style="display:none;">
 
-            <div class="centered-pills">
-                <ul class="nav nav-pills" id='results-nav'>
-                  <li role="presentation"><a href="#federal-name">Federal</a></li>
-                  <li role="presentation"><a id="state-name-nav" href="#state-name"></a></li>
-                  <li role="presentation"><a id="county-name-nav" href="#county-name"></a></li>
-                  <li role="presentation"><a id="local-name-nav" href="#local-name"></a></li>
+            <p class="text-center" id='results-nav'>
+                <a href="#federal-name">Federal</a></li>
+                  <span id='state-nav' style='display: none;'>
+                    <i class='fa fa-long-arrow-right'></i>
+                    <a id="state-name-nav" href="#state-name"></a>
+                  </span>
+                  <span id='county-nav' style='display: none;'>
+                    <i class='fa fa-long-arrow-right'></i>
+                    <a id="county-name-nav" href="#county-name"></a>
+                  </span>
+                  <span id='local-nav' style='display: none;'>
+                    <i class='fa fa-long-arrow-right'></i>
+                    <a id="local-name-nav" href="#local-name"></a>
+                  </span>
                 </ul>
-            </div>
+            </p>
+
+            <hr />
 
             <h3 id='federal-name' class='text-center'>United States Federal Government</h3>
             <table id="federal-results" class="table table-striped">
