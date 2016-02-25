@@ -18,11 +18,11 @@ description: ""
         <div class="input-group input-group-lg col-sm-8 col-sm-offset-2">
             <input type="text" class="form-control" placeholder="Enter your address to find who represents you" id="address" name="address" >
             <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="address-search"><i class='fa fa-search'></i> Search </button>
+                <button class="btn btn-info" type="submit" id="address-search"><i class='fa fa-search'></i> Search </button>
+                <button class="btn btn-default" type="submit" id="find-me"><i class='fa fa-crosshairs'></i> Find me </button>
             </span>
         </div>
 
-        <br />
         <br />
     </div>
 </div>
@@ -35,7 +35,13 @@ description: ""
         </div>
         <div id='response-container' style="display:none;">
 
-            <p class="text-center" id='results-nav'>
+            <div class='text-center' id='address-image'></div>
+
+            <br />
+            <br />
+
+            <p class="lead text-center" id='results-nav'>
+                Levels of government<br />
                 <a href="#federal-name">Federal</a></li>
                   <span id='state-nav' style='display: none;'>
                     <i class='fa fa-long-arrow-right'></i>
@@ -219,11 +225,19 @@ description: ""
       $('#address-search').click(function(){
         addressSearch();
       });
+
+      $("#results-nav a").click(function(e) {
+        e.preventDefault();
+        var scroll_to = $($("#" + e.target.id).attr('href'));
+        $('html, body').animate({
+            scrollTop: scroll_to.offset().top
+        }, 1000);
+      });
       
-      // $('#find_me').click(function(){
-      //   myMap.findMe(); 
-      //   return false;
-      // });
+      $('#find-me').click(function(){
+        findMe(); 
+        return false;
+      });
       
       // $('#reset').click(function(){
       //   myMap.reset(); 

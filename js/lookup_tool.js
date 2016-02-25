@@ -1,4 +1,4 @@
-
+var geocoder = new google.maps.Geocoder;
 var API_KEY = 'AIzaSyA-CGHzz9lN_tkp1Uego2dqRG_1XBPlCJA';
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
 
@@ -124,6 +124,8 @@ function addressSearch() {
                 }
             });
 
+            $("#address-image").html("<img class='img-responsive img-thumbnail' src='https://maps.googleapis.com/maps/api/staticmap?size=600x200&maptype=roadmap&markers=" + encodeURIComponent(address) + "' alt='" + address + "' title='" + address + "' />");
+
             var template = new EJS({'text': $('#tableGuts').html()});
             
             $('#federal-results tbody').append(template.render({people: federal_people}));
@@ -146,13 +148,39 @@ function addressSearch() {
     });
 }
 
-$("#results-nav a").click(function(e) {
-    e.preventDefault();
-    var scroll_to = $($("#" + e.target.id).attr('href'));
-    $('html, body').animate({
-        scrollTop: scroll_to.offset().top
-    }, 1000);
-});
+function findMe() {
+    var foundLocation;
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var accuracy = position.coords.accuracy;
+            var coords = new google.maps.LatLng(latitude, longitude);
+
+            // console.log(coords);
+
+            geocoder.geocode({
+                'location': coords
+            }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        $("#address").val(results[1].formatted_address);
+                        addressSearch();
+                    }
+                }
+            });
+
+        }, function error(msg) {
+            alert('Please enable your GPS position future.');
+        }, {
+            //maximumAge: 600000,
+            //timeout: 5000,
+            enableHighAccuracy: true
+        });
+    } else {
+        alert("Geolocation API is not supported in your browser.");
+    }
+};
 
 function setFoundDivisions(divisions){
     
