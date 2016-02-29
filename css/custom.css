@@ -38,10 +38,6 @@ body {
     max-width: 50px;
 }
 
-.main-content {
-    height: 400px;
-}
-
 .nowrap {
     white-space: nowrap;
 }
