@@ -1,9 +1,9 @@
 port:  5000
 markdown: kramdown
-name: "Representative Lookup"
+name: "My Reps"
 url: /
 encoding: utf-8
 timezone: America/Chicago
-description: ""
+description: "Find out who your representatives are and get them to do something"
 gems:
   - jekyll-redirect-from

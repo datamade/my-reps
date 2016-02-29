@@ -46,6 +46,10 @@ function addressSearch() {
 
         $('table tbody').empty();
 
+        selected_state = '';
+        selected_county = '';
+        selected_local = '';
+
         var federal_people = [];
         var state_people = [];
         var county_people = [];
@@ -134,12 +138,31 @@ function addressSearch() {
                 $('#state-container').hide();
             $('#state-results tbody').append(template.render({people: state_people}));
             
-            if (county_people.length == 0)
+            if (county_people.length == 0) {
                 $('#county-container').hide();
+                if (selected_county == '')
+                    $('#county-container-not-found').hide();
+                else
+                    $('#county-container-not-found').show();
+            }
+            else {
+                $('#county-container').show();
+                $('#county-container-not-found').hide();
+            }
+                
             $('#county-results tbody').append(template.render({people: county_people}));
             
-            if (local_people.length == 0)
+            if (local_people.length == 0) {
                 $('#local-container').hide();
+                if (selected_local == '')
+                    $('#local-container-not-found').hide();
+                else
+                    $('#local-container-not-found').show();
+            }
+            else {
+                $('#local-container').show();
+                $('#local-container-not-found').hide();
+            }
             $('#local-results tbody').append(template.render({people: local_people}));
             
             $('#response-container').show();
@@ -192,18 +215,18 @@ function setFoundDivisions(divisions){
     // console.log(divisions)
     $.each(divisions, function(division_id, division){
         if (state_pattern.test(division_id)) {
-            $("#state-name").html(division.name);
-            $("#state-name-nav").html(division.name);
+            selected_state = division.name;
+            $("[id^=state-name]").html(selected_state);
             $("#state-nav").show();
         }
         if (county_pattern.test(division_id)) {
-            $("#county-name").html(division.name);
-            $("#county-name-nav").html(division.name);
+            selected_county = division.name;
+            $("[id^=county-name]").html(selected_county);
             $("#county-nav").show();
         }
         if (local_pattern.test(division_id) || district_pattern.test(division_id)) {
-            $("#local-name").html(division.name);
-            $("#local-name-nav").html(division.name);
+            selected_local = division.name;
+            $("[id^=local-name]").html(selected_local);
             $("#local-nav").show();
         }
     });
@@ -245,7 +268,7 @@ function formatParty(party) {
         else if (party_letter == 'R')
             css_class ='label-rep';
 
-        return "(<span class='" + css_class + "'>" + party_letter + "</span>)";
+        return "(<span title='" + party + "' class='" + css_class + "'>" + party_letter + "</span>)";
     }
     else
         return '';
