@@ -1,8 +1,6 @@
 ---
 layout: default
 description: ""
-
-
 ---
 
 <div class="row">
@@ -42,43 +40,29 @@ description: ""
 
             <p class="lead text-center" id='results-nav'>
                 Levels of government<br />
-                <a href="#federal-name">Federal</a></li>
-                  <span id='state-nav' style='display: none;'>
+                  <span id='local-nav' style='display: none;'>
+                    <a id="local-name-nav" href="#local-name"></a>
                     <i class='fa fa-long-arrow-right'></i>
-                    <a id="state-name-nav" href="#state-name"></a>
                   </span>
                   <span id='county-nav' style='display: none;'>
-                    <i class='fa fa-long-arrow-right'></i>
                     <a id="county-name-nav" href="#county-name"></a>
-                  </span>
-                  <span id='local-nav' style='display: none;'>
                     <i class='fa fa-long-arrow-right'></i>
-                    <a id="local-name-nav" href="#local-name"></a>
                   </span>
+                  <span id='state-nav' style='display: none;'>
+                    <a id="state-name-nav" href="#state-name"></a>
+                    <i class='fa fa-long-arrow-right'></i>
+                  </span>
+                  <a href="#federal-name">Federal</a></li>
+                  
                 </ul>
             </p>
 
             <hr />
 
-            <h3 id='federal-name' class='text-center'>United States Federal Government</h3>
-            <table id="federal-results" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th><i class='fa fa-institution'></i> Office</th>
-                        <th><i class='fa fa-map-marker'></i> Address</th>
-                        <th><i class='fa fa-bullhorn'></i> Contact</th>
-                        <th><i class='fa fa-external-link'></i> Links</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-            <div id='state-container'>
+            <div id='local-container'>
                 <br />
-                <h3 class='text-center' id="state-name"></h3>
-                <table id="state-results" class="table table-striped">
+                <h3 class='text-center' id="local-name"></h3>
+                <table id="local-results" class="table table-striped">
                     <thead>
                         <tr>
                             <th></th>
@@ -111,10 +95,10 @@ description: ""
                 </table>
             </div>
 
-            <div id='local-container'>
+            <div id='state-container'>
                 <br />
-                <h3 class='text-center' id="local-name"></h3>
-                <table id="local-results" class="table table-striped">
+                <h3 class='text-center' id="state-name"></h3>
+                <table id="state-results" class="table table-striped">
                     <thead>
                         <tr>
                             <th></th>
@@ -128,6 +112,21 @@ description: ""
                     <tbody></tbody>
                 </table>
             </div>
+
+            <h3 id='federal-name' class='text-center'>United States Federal Government</h3>
+            <table id="federal-results" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th><i class='fa fa-institution'></i> Office</th>
+                        <th><i class='fa fa-map-marker'></i> Address</th>
+                        <th><i class='fa fa-bullhorn'></i> Contact</th>
+                        <th><i class='fa fa-external-link'></i> Links</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </div>
 </div>
