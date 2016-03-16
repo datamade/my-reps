@@ -53,3 +53,7 @@ body {
 .label-ind {
     color: #418B07;
 }
+
+#contactModal {
+    font-size: 0.9em;
+}

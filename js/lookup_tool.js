@@ -30,6 +30,8 @@ var social_link_lookup = {
 var selected_state = '';
 var selected_county = '';
 var selected_local = '';
+var all_people = {};
+var pseudo_id = 1;
 
 function addressSearch() {
     var address = $('#address').val();
@@ -49,6 +51,8 @@ function addressSearch() {
         selected_state = '';
         selected_county = '';
         selected_local = '';
+        all_people = {};
+        pseudo_id = 1;
 
         var federal_people = [];
         var state_people = [];
@@ -81,7 +85,8 @@ function addressSearch() {
                                 'phones': null,
                                 'urls': null,
                                 'emails': null,
-                                'division_id': division_id
+                                'division_id': division_id,
+                                'pseudo_id': pseudo_id
                             };
 
                             // console.log(officials[official])
@@ -113,14 +118,20 @@ function addressSearch() {
                             }
 
                             if(checkFederal(division_id, office_name)) {
+                                info['jurisdiction'] = 'Federal Government';
                                 federal_people.push(info);
                             } else if (checkState(division_id)) {
+                                info['jurisdiction'] = selected_state;
                                 state_people.push(info);
                             } else if (checkCounty(division_id)){
+                                info['jurisdiction'] = selected_county;
                                 county_people.push(info);
                             } else {
+                                info['jurisdiction'] = selected_local;
                                 local_people.push(info);
                             }
+                            all_people[pseudo_id] = info;
+                            pseudo_id = pseudo_id + 1;
 
                         });
 
@@ -167,6 +178,16 @@ function addressSearch() {
             
             $('#response-container').show();
             $("#no-response-container").hide();
+
+            // hook up modal stuff
+            var modal_template = new EJS({'text': $('#modalGuts').html()});
+            $('.btn-contact').off('click');
+            $('.btn-contact').on('click', function(){
+                var info = all_people[$(this).data('id')];
+                $('#contactModalLabel').html("Contact " + info.person.name);
+                $('#modalContent').html(modal_template.render({info: info}));
+                $('#contactModal').modal('show');
+            })
         }
     });
 }
@@ -283,4 +304,4 @@ function toTitleCase(str)
 function convertToPlainString(text) {
     if (text === undefined) return '';
     return decodeURIComponent(text);
-};
+}

@@ -6,11 +6,6 @@ layout: default
     <div class='col-md-10 col-md-offset-1'>
         <br />
         <br />
-        <br />
-        <p class='lead text-center'>Find out who your representatives are and get them to <em>do something</em></p>
-
-        <br />
-        <br />
 
         <div class="input-group input-group-lg col-sm-8 col-sm-offset-2">
             <input type="text" class="form-control" placeholder="Enter your address to find who represents you" id="address" name="address" >
@@ -137,6 +132,25 @@ layout: default
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="contactModalLabel"></h4>
+      </div>
+      <div class="modal-body" id='modalContent'>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class='fa fa-times'></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script id="tableGuts" type="text/EJS">
     <% $.each(people, function(i, info){ %>
         <tr>
@@ -170,32 +184,9 @@ layout: default
             </td>
             <% if (info.phones || info.emails){ %>
                 <td class='nowrap'>
-
-                <% if (info.phones){ %>
-                    <% $.each(info.phones, function(i, phone){ %>
-                        <% if ((i + 1) < info.phones.length){ %>
-                            <i class='fa fa-fw fa-phone'></i> <%= phone %><br />
-                        <% } else { %>
-                            <i class='fa fa-fw fa-phone'></i> <%= phone %>
-                        <% } %>
-                    <% }) %>
-                    <br />
-                <% } %>
-
-                <% if (info.emails){ %>
-                    <% $.each(info.emails, function(i, email){ %>
-                        <span class='hidden-xs hidden-sm'>
-                        <% if ((i + 1) < info.emails.length){ %>
-                            <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a><br />
-                        <% } else { %>
-                            <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a>
-                        <% } %>
-                        </span>
-                        <span class='visible-xs-inline visible-sm-inline'>
-                            <a href='mailto:<%= email %>'><i class='fa fa-fw fa-envelope'></i></a>
-                        </span>
-                    <% }) %>
-                <% } %>
+                    <button type="button" class="btn btn-default btn-contact" data-toggle="modal" data-id="<%= info.pseudo_id %>">
+                      <i class='fa fa-phone'></i> Contact
+                    </button>
 
                 <span class='visible-xs-inline visible-sm-inline'>
                 <% if (info.channels){ %>
@@ -232,6 +223,56 @@ layout: default
             <% } %>
         </tr>
     <% }) %>
+</script>
+
+<script id="modalGuts" type="text/EJS">
+    
+    <div class='row'>
+        <div class='col-sm-4'>
+            <% if (info.person.photoUrl) { %>
+                <img class="img-rounded img-responsive" src="<%= info.person.photoUrl %>" alt="<%= info.person.name %>" title="<%= info.person.name %>" />
+            <% } else { %>
+                <img class="img-rounded img-responsive" src="/images/blank-person.jpg" alt="<%= info.person.name %>" title="<%= info.person.name %>" />
+            <% } %>
+            <br />
+            <%= info.person.name %> <%= formatParty(info.person.party) %><br />
+            <%= info.office.name %><br />
+            <%= info.jurisdiction %>
+
+        </div>
+        <div class='col-sm-8'>
+            <p><strong>Tell <%= info.person.name %> to support participatory budgeting!</strong></p>
+            <p>Send your official an email or call their office to schedule a meeting.</p>
+            <p>When you talk to your official about Participatory Budgeting, try to schedule a meeting to tell them more about how it works and why your community needs greater say over how funds are spent.</p>
+            <p>Remember to <a href='#' target='_blank'>read our organizing toolkit</a> and review <a href='#' target='_blank'>these sample materials</a> to equip you  for your meeting with your elected official.</p>
+            <hr />
+            <% if (info.phones){ %>
+                <% $.each(info.phones, function(i, phone){ %>
+                    <% if ((i + 1) < info.phones.length){ %>
+                        <i class='fa fa-fw fa-phone'></i> <%= phone %><br />
+                    <% } else { %>
+                        <i class='fa fa-fw fa-phone'></i> <%= phone %>
+                    <% } %>
+                <% }) %>
+                <br />
+            <% } %>
+
+            <% if (info.emails){ %>
+                <% $.each(info.emails, function(i, email){ %>
+                    <span class='hidden-xs hidden-sm'>
+                    <% if ((i + 1) < info.emails.length){ %>
+                        <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a><br />
+                    <% } else { %>
+                        <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a>
+                    <% } %>
+                    </span>
+                    <span class='visible-xs-inline visible-sm-inline'>
+                        <a href='mailto:<%= email %>'><i class='fa fa-fw fa-envelope'></i></a>
+                    </span>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
 </script>
 
 <script src="/js/lookup_tool.js"></script>
