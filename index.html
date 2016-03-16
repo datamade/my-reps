@@ -228,7 +228,7 @@ layout: default
 <script id="modalGuts" type="text/EJS">
     
     <div class='row'>
-        <div class='col-sm-4'>
+        <div class='col-xs-4'>
             <% if (info.person.photoUrl) { %>
                 <img class="img-rounded img-responsive" src="<%= info.person.photoUrl %>" alt="<%= info.person.name %>" title="<%= info.person.name %>" />
             <% } else { %>
@@ -240,7 +240,7 @@ layout: default
             <%= info.jurisdiction %>
 
         </div>
-        <div class='col-sm-8'>
+        <div class='col-xs-8'>
             <p><strong>Tell <%= info.person.name %> to support participatory budgeting!</strong></p>
             <p>Send your official an email or call their office to schedule a meeting.</p>
             <p>When you talk to your official about Participatory Budgeting, try to schedule a meeting to tell them more about how it works and why your community needs greater say over how funds are spent.</p>
@@ -259,16 +259,11 @@ layout: default
 
             <% if (info.emails){ %>
                 <% $.each(info.emails, function(i, email){ %>
-                    <span class='hidden-xs hidden-sm'>
                     <% if ((i + 1) < info.emails.length){ %>
                         <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a><br />
                     <% } else { %>
                         <i class='fa fa-fw fa-envelope'></i> <a href='mailto:<%= email %>'><%= email %></a>
                     <% } %>
-                    </span>
-                    <span class='visible-xs-inline visible-sm-inline'>
-                        <a href='mailto:<%= email %>'><i class='fa fa-fw fa-envelope'></i></a>
-                    </span>
                 <% }) %>
             <% } %>
         </div>
