@@ -63,8 +63,9 @@ layout: default
                             <th>Representative</th>
                             <th class='hidden-xs hidden-sm'><i class='fa fa-institution'></i> Office</th>
                             <th class='hidden-xs'><i class='fa fa-map-marker'></i> Address</th>
-                            <th><i class='fa fa-bullhorn'></i> Contact</th>
-                            <th class='hidden-xs hidden-sm'><i class='fa fa-external-link'></i> Links</th>
+                            <th><i class='fa fa-external-link'></i> Links</th>
+                            <th></th>
+                            
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -85,8 +86,9 @@ layout: default
                             <th>Representative</th>
                             <th class='hidden-xs hidden-sm'><i class='fa fa-institution'></i> Office</th>
                             <th class='hidden-xs'><i class='fa fa-map-marker'></i> Address</th>
-                            <th><i class='fa fa-bullhorn'></i> Contact</th>
-                            <th class='hidden-xs hidden-sm'><i class='fa fa-external-link'></i> Links</th>
+                            <th><i class='fa fa-external-link'></i> Links</th>
+                            <th></th>
+                            
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -107,8 +109,8 @@ layout: default
                             <th>Representative</th>
                             <th class='hidden-xs hidden-sm'><i class='fa fa-institution'></i> Office</th>
                             <th class='hidden-xs'><i class='fa fa-map-marker'></i> Address</th>
-                            <th><i class='fa fa-bullhorn'></i> Contact</th>
-                            <th class='hidden-xs hidden-sm'><i class='fa fa-external-link'></i> Links</th>
+                            <th><i class='fa fa-external-link'></i> Links</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -123,8 +125,8 @@ layout: default
                         <th>Representative</th>
                         <th class='hidden-xs hidden-sm'><i class='fa fa-institution'></i> Office</th>
                         <th class='hidden-xs'><i class='fa fa-map-marker'></i> Address</th>
-                        <th><i class='fa fa-bullhorn'></i> Contact</th>
-                        <th class='hidden-xs hidden-sm'><i class='fa fa-external-link'></i> Links</th>
+                        <th><i class='fa fa-external-link'></i> Links</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -182,44 +184,42 @@ layout: default
                     <% }) %>
                 <% } %>
             </td>
+            <td>
+                <% if (info.channels || info.urls){ %>
+                    <span class='hidden-xs hidden-sm'>
+                        <% if (info.channels){ %>
+                        <% $.each(info.channels, function(i, channel){ %>
+                            <a href="<%= channel.link %>" target="_blank"><i class="fa fa-fw fa-<%= channel.icon %>"> </i></a>
+                        <% }) %>
+                        <% } %>
+                        <% if (info.urls){ %>
+                            <% $.each(info.urls, function(i, url){ %>
+                                <a href="<%= url %>" target="_blank"><i class="fa fa-fw fa-globe"> </i></a>
+                            <% }) %>
+                        <% } %>
+                    </span>
+                    <span class='visible-xs-inline visible-sm-inline'>
+                        <% if (info.channels){ %>
+                        <% $.each(info.channels, function(i, channel){ %>
+                            <a href="<%= channel.link %>" target="_blank"><i class="fa fa-fw fa-<%= channel.icon %>"> </i></a>
+                        <% }) %>
+                        <% } %>
+                        <% if (info.urls){ %>
+                            <% $.each(info.urls, function(i, url){ %>
+                                <a href="<%= url %>" target="_blank"><i class="fa fa-fw fa-globe"> </i></a>
+                            <% }) %>
+                        <% } %>
+                    </span>
+                <% } %>
+            </td>
             <% if (info.phones || info.emails){ %>
                 <td class='nowrap'>
                     <button type="button" class="btn btn-default btn-contact" data-toggle="modal" data-id="<%= info.pseudo_id %>">
                       <i class='fa fa-phone'></i> Contact
                     </button>
-
-                <span class='visible-xs-inline visible-sm-inline'>
-                <% if (info.channels){ %>
-                <% $.each(info.channels, function(i, channel){ %>
-                    <a href="<%= channel.link %>" target="_blank"><i class="fa fa-fw fa-<%= channel.icon %>"> </i></a>
-                <% }) %>
-                <% } %>
-                <% if (info.urls){ %>
-                    <% $.each(info.urls, function(i, url){ %>
-                        <a href="<%= url %>" target="_blank"><i class="fa fa-fw fa-globe"> </i></a>
-                    <% }) %>
-                <% } %>
-                </span>
                 </td>
             <% } else { %>
                 <td></td>
-            <% } %>
-            <% if (info.channels || info.urls){ %>
-                <td class='hidden-xs hidden-sm'>
-
-                <% if (info.channels){ %>
-                <% $.each(info.channels, function(i, channel){ %>
-                    <a href="<%= channel.link %>" target="_blank"><i class="fa fa-fw fa-<%= channel.icon %>"> </i></a>
-                <% }) %>
-                <% } %>
-                <% if (info.urls){ %>
-                    <% $.each(info.urls, function(i, url){ %>
-                        <a href="<%= url %>" target="_blank"><i class="fa fa-fw fa-globe"> </i></a>
-                    <% }) %>
-                <% } %>
-                </td>
-            <% } else { %>
-                <td class='hidden-xs hidden-sm'></td>
             <% } %>
         </tr>
     <% }) %>
@@ -235,7 +235,7 @@ layout: default
                 <img class="img-rounded img-responsive" src="/images/blank-person.jpg" alt="<%= info.person.name %>" title="<%= info.person.name %>" />
             <% } %>
             <br />
-            <%= info.person.name %> <%= formatParty(info.person.party) %><br />
+            <strong><%= info.person.name %> <%= formatParty(info.person.party) %></strong><br />
             <%= info.office.name %><br />
             <%= info.jurisdiction %>
 
