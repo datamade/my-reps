@@ -1,9 +1,9 @@
 port:  5000
 markdown: kramdown
-name: "My Reps"
+name: "Find My Reps"
 url: /
 encoding: utf-8
 timezone: America/Chicago
-description: "Find out who your representatives are and get them to do something"
+description: "Enter your address to find and contact your local elected representatives"
 gems:
   - jekyll-redirect-from
