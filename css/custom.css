@@ -1,16 +1,11 @@
-@font-face {
-     font-family: 'StateFaceRegular';
-     src: url('/fonts/stateface-regular-webfont.eot');
-     src: url('/fonts/stateface-regular-webfont.eot?#iefix') format('embedded-opentype'),
-          url('/fonts/stateface-regular-webfont.woff') format('woff'),
-          url('/fonts/stateface-regular-webfont.ttf') format('truetype'),
-          url('/fonts/stateface-regular-webfont.svg#StateFaceRegular') format('svg');
-     font-weight: normal;
-     font-style: normal;
- }
-
 body {
     font-size: 16px;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: bold;
 }
 
 .table > thead > tr > th { 
