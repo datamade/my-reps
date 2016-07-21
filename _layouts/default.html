@@ -41,6 +41,8 @@
     {% endif %}
     {% if page.image %}
       <meta content="{{ site.url }}/{{ page.image }}" property="og:image">
+    {% else %}
+      <meta content="{{ site.url }}/images/usa.png" property="og:image">
     {% endif %}
     {% if page.categories %}
       {% for category in page.categories limit:1 %}
@@ -72,6 +74,8 @@
     {% endif %}
     {% if page.image %}
       <meta name="twitter:image:src" content="{{ site.url }}/images/{{ page.image }}">
+    {% else %}
+      <meta name="twitter:image:src" content="{{ site.url }}/images/usa.png">
     {% endif %}
       <link href="/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

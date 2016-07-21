@@ -4,6 +4,6 @@ name: "Find My Reps"
 url: /
 encoding: utf-8
 timezone: America/Chicago
-description: "Enter your address to find and contact your local elected representatives"
+description: "Enter your address to find and contact your federal, state, county and local elected representatives"
 gems:
   - jekyll-redirect-from
