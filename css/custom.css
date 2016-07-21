@@ -1,11 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Bitter:400,400italic,700);
+
 body {
     font-size: 16px;
     font-family: 'Open Sans', 'Arial', sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: 'Bitter', serif;
     font-weight: bold;
+}
+
+h1 {
+    font-size: 48px;
+    padding-bottom: 10px;
 }
 
 .table > thead > tr > th { 
