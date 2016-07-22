@@ -6,6 +6,12 @@ Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](ht
 
 Demo site: [findmyreps.datamade.us](https://findmyreps.datamade.us)
 
+## Organizers: reuse our code!
+
+We built this tool to be open source and easy to repurpose. Feel free to copy and reuse the My Reps codebase and customize the messaging and content for your issue.
+
+If you need professional assistance, contact DataMade at info@datamade.us
+
 ## Running locally
 
 ``` bash
@@ -17,7 +23,6 @@ jekyll serve -w
 ```
 
 navigate to http://localhost:5000/
-
 
 # Web dependencies
 
