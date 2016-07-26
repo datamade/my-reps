@@ -1,12 +1,10 @@
 # My Reps
 
-Enter your address to find and contact your local elected representatives.
-
-Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](https://datamade.us/) and [Participatory Budgeting Project](http://participatorybudgeting.org/). Powered by the [Google Civic Information API](https://developers.google.com/civic-information/).
+Enter your address to **find and contact your federal, state, county and local elected representatives Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](https://datamade.us/) and [Participatory Budgeting Project](http://participatorybudgeting.org/). Powered by the [Google Civic Information API](https://developers.google.com/civic-information/).
 
 For more, read our launch blog post: [We find your reps so you don't have to](https://datamade.us/blog/we-find-your-reps-so-you-dont-have-to).
 
-Demo site: [myreps.datamade.us](http://myreps.datamade.us)
+## Demo site: [myreps.datamade.us](http://myreps.datamade.us)
 
 ![My Reps](https://datamade.us/images/blog/2016-07-26-we-find-your-reps-so-you-dont-have-to/img1.jpg)
 
