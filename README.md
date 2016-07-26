@@ -8,7 +8,7 @@ For more, read our launch blog post: [We find your reps so you don't have to](ht
 
 Demo site: [myreps.datamade.us](http://myreps.datamade.us)
 
-![My Reps](https://datamade.us/images/blog/2016-07-26-we-find-your-reps-so-you-dont-have-to/img0.jpg)
+![My Reps](https://datamade.us/images/blog/2016-07-26-we-find-your-reps-so-you-dont-have-to/img1.jpg)
 
 ## Organizers: reuse our code!
 
