@@ -41,6 +41,11 @@ We used the following open source tools:
 * Derek Eder - developer, content
 * Eric van Zanten - developer
 
+## Outdated or incorrect data
+
+Information on elected officials comes from the Google Civic Information API. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScA45a5Acnn6hK1R6dd45ttoVbI4tWc7oXl-pjQ-84yx7yuxA/viewform).
+
+
 ## Errors / Bugs
 
 If something is not behaving intuitively, it is a bug, and should be reported.
