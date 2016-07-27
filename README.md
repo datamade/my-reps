@@ -23,6 +23,8 @@ Sometimes data is outdated or missing. If you notice an issue with the data, ple
 
 ## Running locally
 
+This website is built using Jekyll. You will need to [install it first](http://jekyllrb.com/docs/installation/).
+
 ``` bash
 git clone git@github.com:datamade/my-reps.git
 cd my-reps
