@@ -14,6 +14,13 @@ We built this tool to be open source and easy to repurpose. Feel free to copy an
 
 If you need professional assistance, contact DataMade at info@datamade.us
 
+## Reporting outdated or missing information
+
+Information on elected officials comes from the [Google Civic Information API](https://developers.google.com/civic-information/), which aggregates data across the United States on elected officials in federal, state, county and local government offices. 
+
+Sometimes data is outdated or missing. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScA45a5Acnn6hK1R6dd45ttoVbI4tWc7oXl-pjQ-84yx7yuxA/viewform).
+
+
 ## Running locally
 
 ``` bash
@@ -26,7 +33,7 @@ jekyll serve -w
 
 navigate to http://localhost:5000/
 
-# Web dependencies
+## Web dependencies
 
 Data comes from the [Google Civic Information API](https://developers.google.com/civic-information/).
 
@@ -40,11 +47,6 @@ We used the following open source tools:
 
 * Derek Eder - developer, content
 * Eric van Zanten - developer
-
-## Outdated or incorrect data
-
-Information on elected officials comes from the Google Civic Information API. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScA45a5Acnn6hK1R6dd45ttoVbI4tWc7oXl-pjQ-84yx7yuxA/viewform).
-
 
 ## Errors / Bugs
 
