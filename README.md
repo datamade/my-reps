@@ -18,7 +18,7 @@ If you need professional assistance, contact DataMade at info@datamade.us
 
 Information on elected officials comes from the [Google Civic Information API](https://developers.google.com/civic-information/), which aggregates data across the United States on elected officials in federal, state, county and local government offices. 
 
-Sometimes data is outdated or missing. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScA45a5Acnn6hK1R6dd45ttoVbI4tWc7oXl-pjQ-84yx7yuxA/viewform).
+Sometimes data is outdated or missing. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScFpFTOkTpm0YoerLLprY_ySS9PRXLsu27SM01hebHqkefW2Q/viewform).
 
 
 ## Running locally
