@@ -1,6 +1,6 @@
 # My Reps
 
-Enter your address to **find and contact your federal, state, county and local elected representatives Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](https://datamade.us/) and [Participatory Budgeting Project](http://participatorybudgeting.org/). Powered by the [Google Civic Information API](https://developers.google.com/civic-information/).
+Enter your address to find and contact your federal, state, county and local elected representatives Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](https://datamade.us/) and [Participatory Budgeting Project](http://participatorybudgeting.org/). Powered by the [Google Civic Information API](https://developers.google.com/civic-information/).
 
 For more, read our launch blog post: [We find your reps so you don't have to](https://datamade.us/blog/we-find-your-reps-so-you-dont-have-to).
 
@@ -11,6 +11,57 @@ For more, read our launch blog post: [We find your reps so you don't have to](ht
 ## Organizers: reuse our code!
 
 We built this tool to be open source and easy to repurpose. Feel free to copy and reuse the My Reps codebase and customize the messaging and content for your issue.
+
+Here's how to do it:
+
+#### 1. Fork this repository (in the command line)
+
+First, click the 'Fork' button in the upper right corner of this page to copy it over to your GitHub account.
+
+After that, you can clone it to your local computer (requires the command line):
+``` bash
+git clone git@github.com:your-name-here/my-reps.git
+cd my-reps
+```
+
+#### 2. Modify the `index.html` and `/js/lookup_tool.js` files as needed
+
+Some examples of things you can do:
+
+* Change the messaging on the home page and add a call to action
+* Change the instructions in the 'contact' popup for each representative
+* Limit your results to specific levels of government (local, county, state & federal)
+
+#### 3. Run it
+
+You can run this locally using this handy python command:
+
+```bash
+python -m SimpleHTTPServer
+```
+
+navigate to http://localhost:8000/
+
+#### 4. Deploy it
+
+**GitHub pages** You can host your table on GitHub pages for free! Once you've made all your changes and committed them, push everything in the `master` branch to `gh-pages` which automatically enables GitHub pages.
+```bash
+git push origin master:gh-pages
+```
+
+Then navigate to http://your-github-username.github.io/my-reps/
+
+Read more on working with [GitHub pages projects](https://help.github.com/articles/user-organization-and-project-pages/#project-pages).
+
+**Web server** This project should work on any web server. Upload this entire project (including all the `css`, `data`, `fonts` and `js` folders) to a public folder on your server using FTP.
+
+#### 5. iframe it (optional)
+
+Want to embed your nifty table on your website? You can use an [iframe](http://www.w3schools.com/tags/tag_iframe.asp). Once you've deployed your table (above in step 5) you can link to it in an iframe right in your HTML.
+
+```html
+<iframe style="border-style: none;" src="https://datamade.github.io/my-reps/" height="950" width="600"></iframe>
+```
 
 If you need professional assistance, contact DataMade at info@datamade.us
 
