@@ -1,8 +1,8 @@
 # My Reps
 
-Enter your address to find and contact your federal, state, county and local elected representatives Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](https://datamade.us/) and [Participatory Budgeting Project](http://participatorybudgeting.org/). Powered by the [Google Civic Information API](https://developers.google.com/civic-information/).
+My Reps helps you locate and contact your federal, state, county and local elected representatives. Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](https://datamade.us/) and [Participatory Budgeting Project](http://participatorybudgeting.org/). Powered by the [Google Civic Information API](https://developers.google.com/civic-information/).
 
-For more, read our launch blog post: [We find your reps so you don't have to](https://datamade.us/blog/we-find-your-reps-so-you-dont-have-to).
+For more, read our launch blog post, "[We find your reps so you don't have to](https://datamade.us/blog/we-find-your-reps-so-you-dont-have-to)".
 
 ## Demo site: [myreps.datamade.us](http://myreps.datamade.us)
 
@@ -10,13 +10,13 @@ For more, read our launch blog post: [We find your reps so you don't have to](ht
 
 ## Organizers: reuse our code!
 
-We built this tool to be open source and easy to repurpose. Feel free to copy and reuse the My Reps codebase and customize the messaging and content for your issue.
+We built this tool to be open source and easy to repurpose. Feel free to copy, reuse, and customize the My Reps codebase.
 
 Here's how to do it:
 
 #### 1. Fork this repository
 
-Click the 'Fork' button in the upper right corner of this page to copy it over to your GitHub account.
+Click the 'Fork' button in the upper right corner of this page to copy it to your GitHub account.
 
 ![Fork this repo](https://help.github.com/assets/images/help/repository/fork_button.jpg)
 
@@ -36,13 +36,33 @@ For the address search to work, you'll need to get a new Google Maps API key. Yo
 
 When you get a key, set the `google_api_key` in `_config.yml`.
 
+```
+port:  5000
+markdown: kramdown
+name: "My Reps"
+
+...
+
+google_api_key: YOUR API KEY GOES HERE
+```
+
 #### 4. Modify the `index.html` and `/js/lookup_tool.js` files as needed
 
 Some examples of things you can do:
 
-**Change the messaging on the home page and add a call to action**
+**Customize the messaging**
 
-Start by changing the main tagline in the `_layouts/default.html` page. You can also add text to the top of the `index.html` page.
+First, create a new tagline in the `_layouts/default.html` page.
+
+```html
+<div class='text-center'>
+    <h1><a href='index.html'>My Reps</a></h1>
+    <!-- Update this tagline! -->
+    <p class='lead'>Enter your address to <strong>find and contact</strong> your federal, state, county and local elected representatives</p>
+</div>
+```
+
+Then, add text to the top of the `index.html` page.
 
 ```html
 ---
@@ -58,7 +78,9 @@ layout: default
 
 **Change the instructions in the 'contact' popup for each representative**
 
-You can change the text that displays when you click the 'Contact' button next to each representative. The place to edit that is in `index.html` in the `modalGuts` section. Note that we're using [EJS templates](http://www.embeddedjs.com/) for this part, so mind the template tags.
+You can change the text that displays when you click the 'Contact' button next to each representative. Go to the `modalGuts` section in `index.html` and look for 'Add your contact instructions here!'.
+
+Note that we're using [EJS templates](http://www.embeddedjs.com/) for this part, so mind the template tags.
 
 **Limit your results to specific levels of government (local, county, state & federal)**
 
@@ -81,11 +103,11 @@ This website is built using Jekyll. You will need to [install it first](http://j
 jekyll serve -w
 ```
 
-Then open your web browser and navigate to http://localhost:5000
+Then, open your web browser and navigate to http://localhost:5000
 
 #### 6. Deploy it with GitHub pages
 
-**GitHub pages** You can host your table on GitHub pages for free! Once you've made all your changes and committed them, push everything in the `master` branch to `gh-pages` which automatically enables GitHub pages.
+**GitHub pages** You can host your table on GitHub pages for free! Once you've made all your changes and committed them, push everything in the `master` branch to `gh-pages`, which automatically enables GitHub pages.
 ```bash
 git push origin master:gh-pages
 ```
@@ -108,7 +130,7 @@ If you need professional assistance, contact DataMade at info@datamade.us
 
 ## Reporting outdated or missing information
 
-Information on elected officials comes from the [Google Civic Information API](https://developers.google.com/civic-information/), which aggregates data across the United States on elected officials in federal, state, county and local government offices. 
+Information on elected officials comes from the [Google Civic Information API](https://developers.google.com/civic-information/), which aggregates data across the United States on elected officials in federal, state, county and local government offices.
 
 Sometimes data is outdated or missing. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScFpFTOkTpm0YoerLLprY_ySS9PRXLsu27SM01hebHqkefW2Q/viewform).
 
@@ -134,7 +156,7 @@ If something is not behaving intuitively, it is a bug, and should be reported.
 Report it here: https://github.com/datamade/my-reps/issues
 
 ## Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Send a pull request. Bonus points for topic branches.
