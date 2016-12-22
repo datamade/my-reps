@@ -18,6 +18,8 @@ Here's how to do it:
 
 Click the 'Fork' button in the upper right corner of this page to copy it over to your GitHub account.
 
+![Fork this repo](https://help.github.com/assets/images/help/repository/fork_button.jpg)
+
 #### 2. Clone this project to your local computer
 
 Next, you can clone it to your local computer (requires the command line):
