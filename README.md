@@ -14,7 +14,7 @@ We built this tool to be open source and easy to repurpose. Feel free to copy an
 
 Here's how to do it:
 
-#### 1. Fork this repository (in the command line)
+#### 1. Fork this repository
 
 Click the 'Fork' button in the upper right corner of this page to copy it over to your GitHub account.
 
@@ -25,6 +25,8 @@ Next, you can clone it to your local computer (requires the command line):
 git clone git@github.com:your-name-here/my-reps.git
 cd my-reps
 ```
+
+You can use [GitHub Desktop](https://desktop.github.com/) instead if you are not familiar with the command line.
 
 #### 3. Add your Google Maps API key
 
