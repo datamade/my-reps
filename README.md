@@ -16,15 +16,23 @@ Here's how to do it:
 
 #### 1. Fork this repository (in the command line)
 
-First, click the 'Fork' button in the upper right corner of this page to copy it over to your GitHub account.
+Click the 'Fork' button in the upper right corner of this page to copy it over to your GitHub account.
 
-After that, you can clone it to your local computer (requires the command line):
+#### 2. Clone this project to your local computer
+
+Next, you can clone it to your local computer (requires the command line):
 ``` bash
 git clone git@github.com:your-name-here/my-reps.git
 cd my-reps
 ```
 
-#### 2. Modify the `index.html` and `/js/lookup_tool.js` files as needed
+#### 3. Add your Google Maps API key
+
+For the address search to work, you'll need to get a new Google Maps API key. You can get yours and enable it by following these instructions: https://developers.google.com/maps/documentation/javascript/get-api-key
+
+When you get a key, set the `google_api_key` in `_config.yml`.
+
+#### 4. Modify the `index.html` and `/js/lookup_tool.js` files as needed
 
 Some examples of things you can do:
 
@@ -32,7 +40,7 @@ Some examples of things you can do:
 * Change the instructions in the 'contact' popup for each representative
 * Limit your results to specific levels of government (local, county, state & federal)
 
-#### 3. Run it
+#### 5. Run it
 
 You can run this locally using this handy python command:
 
@@ -42,7 +50,7 @@ python -m SimpleHTTPServer
 
 navigate to http://localhost:8000/
 
-#### 4. Deploy it
+#### 6. Deploy it with GitHub pages
 
 **GitHub pages** You can host your table on GitHub pages for free! Once you've made all your changes and committed them, push everything in the `master` branch to `gh-pages` which automatically enables GitHub pages.
 ```bash
@@ -53,24 +61,17 @@ Then navigate to http://your-github-username.github.io/my-reps/
 
 Read more on working with [GitHub pages projects](https://help.github.com/articles/user-organization-and-project-pages/#project-pages).
 
-**Web server** This project should work on any web server. Upload this entire project (including all the `css`, `data`, `fonts` and `js` folders) to a public folder on your server using FTP.
-
-#### 5. iframe it (optional)
+#### 5. Add it as an iframe on your site (optional)
 
 Want to embed your nifty table on your website? You can use an [iframe](http://www.w3schools.com/tags/tag_iframe.asp). Once you've deployed your table (above in step 5) you can link to it in an iframe right in your HTML.
+
+Here's an example:
 
 ```html
 <iframe style="border-style: none;" src="https://datamade.github.io/my-reps/" height="950" width="600"></iframe>
 ```
 
 If you need professional assistance, contact DataMade at info@datamade.us
-
-## Reporting outdated or missing information
-
-Information on elected officials comes from the [Google Civic Information API](https://developers.google.com/civic-information/), which aggregates data across the United States on elected officials in federal, state, county and local government offices. 
-
-Sometimes data is outdated or missing. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScFpFTOkTpm0YoerLLprY_ySS9PRXLsu27SM01hebHqkefW2Q/viewform).
-
 
 ## Running locally
 
@@ -85,6 +86,12 @@ jekyll serve -w
 ```
 
 navigate to http://localhost:5000/
+
+## Reporting outdated or missing information
+
+Information on elected officials comes from the [Google Civic Information API](https://developers.google.com/civic-information/), which aggregates data across the United States on elected officials in federal, state, county and local government offices. 
+
+Sometimes data is outdated or missing. If you notice an issue with the data, please [report it to Google](https://docs.google.com/forms/d/e/1FAIpQLScFpFTOkTpm0YoerLLprY_ySS9PRXLsu27SM01hebHqkefW2Q/viewform).
 
 ## Web dependencies
 
