@@ -40,9 +40,29 @@ When you get a key, set the `google_api_key` in `_config.yml`.
 
 Some examples of things you can do:
 
-* Change the messaging on the home page and add a call to action
-* Change the instructions in the 'contact' popup for each representative
-* Limit your results to specific levels of government (local, county, state & federal)
+**Change the messaging on the home page and add a call to action**
+
+Start by changing the main tagline in the `_layouts/default.html` page. You can also add text to the top of the `index.html` page.
+
+```
+---
+layout: default
+---
+
+<p class='text-center'>This is my call to action. Let's do something about it!</p>
+
+<div class="row">
+...
+
+```
+
+**Change the instructions in the 'contact' popup for each representative**
+
+You can change the text that displays when you click the 'Contact' button next to each representative. The place to edit that is in `index.html` in the `modalGuts` section. Note that we're using [EJS templates](http://www.embeddedjs.com/) for this part, so mind the template tags.
+
+**Limit your results to specific levels of government (local, county, state & federal)**
+
+Instructions coming soon.
 
 #### 5. Run it
 
