@@ -118,6 +118,7 @@ Data comes from the [Google Civic Information API](https://developers.google.com
 
 We used the following open source tools:
 
+* [Jekyll](http://jekyllrb.com/docs/installation/) - Static website framework
 * [Bootstrap](http://getbootstrap.com/) - Responsive HTML, CSS and Javascript framework
 * [jQuery Address](https://github.com/asual/jquery-address) - javascript library creating RESTful URLs
 * [Google Civic Information API](https://developers.google.com/civic-information/) - API for looking up elected representatives in the USA
