@@ -63,7 +63,7 @@ Then navigate to http://your-github-username.github.io/my-reps/
 
 Read more on working with [GitHub pages projects](https://help.github.com/articles/user-organization-and-project-pages/#project-pages).
 
-#### 5. Add it as an iframe on your site (optional)
+#### 7. Add it as an iframe on your site (optional)
 
 Want to embed your nifty table on your website? You can use an [iframe](http://www.w3schools.com/tags/tag_iframe.asp). Once you've deployed your table (above in step 5) you can link to it in an iframe right in your HTML.
 
