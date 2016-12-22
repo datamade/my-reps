@@ -46,13 +46,13 @@ Some examples of things you can do:
 
 #### 5. Run it
 
-You can run this locally using this handy python command:
+This website is built using Jekyll. You will need to [install it first](http://jekyllrb.com/docs/installation/).
 
-```bash
-python -m SimpleHTTPServer
+```console
+jekyll serve -w
 ```
 
-navigate to http://localhost:8000/
+Then open your web browser and navigate to http://localhost:5000
 
 #### 6. Deploy it with GitHub pages
 
@@ -76,20 +76,6 @@ Here's an example:
 ```
 
 If you need professional assistance, contact DataMade at info@datamade.us
-
-## Running locally
-
-This website is built using Jekyll. You will need to [install it first](http://jekyllrb.com/docs/installation/).
-
-``` bash
-git clone git@github.com:datamade/my-reps.git
-cd my-reps
-
-# to run locally
-jekyll serve -w
-```
-
-navigate to http://localhost:5000/
 
 ## Reporting outdated or missing information
 
