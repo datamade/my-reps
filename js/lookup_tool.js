@@ -1,5 +1,11 @@
+// configuration for showing representatives at different levels of government
+
+var show_federal = true; //change this to false to hide federal results
+var show_state   = true;
+var show_county  = true;
+var show_local   = true;
+
 var geocoder = new google.maps.Geocoder;
-var API_KEY = 'AIzaSyA-CGHzz9lN_tkp1Uego2dqRG_1XBPlCJA';
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
 
 // parsing out division IDs
@@ -143,39 +149,59 @@ function addressSearch() {
 
             var template = new EJS({'text': $('#tableGuts').html()});
             
-            $('#federal-results tbody').append(template.render({people: federal_people}));
-            
-            if (state_people.length == 0)
-                $('#state-container').hide();
-            $('#state-results tbody').append(template.render({people: state_people}));
-            
-            if (county_people.length == 0) {
-                $('#county-container').hide();
-                if (selected_county == '')
+            if (show_federal) {
+                $('#federal-results tbody').append(template.render({people: federal_people}));
+            } else {
+                $('#federal-container').hide()
+                $('#fed-nav').hide();
+            }
+
+            if (show_state) {
+                if (state_people.length == 0)
+                    $('#state-container').hide();
+                $('#state-results tbody').append(template.render({people: state_people}));
+            } else {
+                $('#state-container').hide()
+                $('#state-nav').hide();
+            }                
+
+            if (show_county) {
+                if (county_people.length == 0) {
+                    $('#county-container').hide();
+                    if (selected_county == '')
+                        $('#county-container-not-found').hide();
+                    else
+                        $('#county-container-not-found').show();
+                }
+                else {
+                    $('#county-container').show();
                     $('#county-container-not-found').hide();
-                else
-                    $('#county-container-not-found').show();
-            }
-            else {
-                $('#county-container').show();
-                $('#county-container-not-found').hide();
-            }
-                
-            $('#county-results tbody').append(template.render({people: county_people}));
-            
-            if (local_people.length == 0) {
-                $('#local-container').hide();
-                if (selected_local == '')
+                }
+
+                $('#county-results tbody').append(template.render({people: county_people}));
+            } else {
+                $('#county-container').hide()
+                $('#county-nav').hide();
+            }  
+
+            if (show_local) {       
+                if (local_people.length == 0) {
+                    $('#local-container').hide();
+                    if (selected_local == '')
+                        $('#local-container-not-found').hide();
+                    else
+                        $('#local-container-not-found').show();
+                }
+                else {
+                    $('#local-container').show();
                     $('#local-container-not-found').hide();
-                else
-                    $('#local-container-not-found').show();
+                }
+                $('#local-results tbody').append(template.render({people: local_people}));   
+            } else {
+                $('#local-container').hide()
+                $('#local-nav').hide();
             }
-            else {
-                $('#local-container').show();
-                $('#local-container-not-found').hide();
-            }
-            $('#local-results tbody').append(template.render({people: local_people}));
-            
+
             $('#response-container').show();
             $("#no-response-container").hide();
 

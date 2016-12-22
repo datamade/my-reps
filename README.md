@@ -44,7 +44,7 @@ Some examples of things you can do:
 
 Start by changing the main tagline in the `_layouts/default.html` page. You can also add text to the top of the `index.html` page.
 
-```
+```html
 ---
 layout: default
 ---
@@ -62,7 +62,16 @@ You can change the text that displays when you click the 'Contact' button next t
 
 **Limit your results to specific levels of government (local, county, state & federal)**
 
-Instructions coming soon.
+In `js/lookup_tool.js` you can toggle if you want to show federal, state, county and local government representatives.
+
+```javascript
+
+var show_federal = true; //change this to false to hide federal results
+var show_state   = true;
+var show_county  = true;
+var show_local   = true;
+
+```
 
 #### 5. Run it
 
