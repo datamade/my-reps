@@ -150,12 +150,12 @@ We used the following open source tools:
 * Derek Eder - developer, content
 * Eric van Zanten - developer
 
-## Errors / Bugs
+## Errors and Bugs
 
 If something is not behaving intuitively, it is a bug, and should be reported.
 Report it here: https://github.com/datamade/my-reps/issues
 
-## Note on Patches/Pull Requests
+## Note on Patches and Pull Requests
 
 * Fork the project.
 * Make your feature addition or bug fix.
