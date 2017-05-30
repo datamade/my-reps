@@ -1,10 +1,3 @@
-// configuration for showing representatives at different levels of government
-
-var show_federal = true; //change this to false to hide federal results
-var show_state   = true;
-var show_county  = true;
-var show_local   = true;
-
 var geocoder = new google.maps.Geocoder;
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
 
@@ -40,6 +33,38 @@ var all_people = {};
 var pseudo_id = 1;
 
 function addressSearch() {
+
+    // configuration for showing representatives at different levels of government
+
+    var show_local   = false;
+    var show_county  = false;
+    var show_state   = false;
+    var show_federal = false;
+
+    $.address.parameter('results_level', '');
+    // set levels from checkboxes
+    if ($('#show_local_results').is(':checked')) {
+        show_local = true;
+        $.address.parameter('results_level', 'local', true);
+    }
+    if ($('#show_county_results').is(':checked')) {
+        show_county = true;
+        $.address.parameter('results_level', 'county', true);
+    }
+    if ($('#show_state_results').is(':checked')) {
+        show_state = true;
+        $.address.parameter('results_level', 'state', true);
+    }
+    if ($('#show_federal_results').is(':checked')) {
+        show_federal = true;
+        $.address.parameter('results_level', 'federal', true);
+    }
+
+    // console.log('doin search')
+    // console.log('local: ' + show_local)
+    // console.log('county: ' + show_county)
+    // console.log('state: ' + show_state)
+    // console.log('federal: ' + show_federal)
     var address = $('#address').val();
     $.address.parameter('address', encodeURIComponent(address));
 
@@ -150,6 +175,8 @@ function addressSearch() {
             var template = new EJS({'text': $('#tableGuts').html()});
             
             if (show_federal) {
+                $('#federal-container').show();
+                $('#fed-nav').show();
                 $('#federal-results tbody').append(template.render({people: federal_people}));
             } else {
                 $('#federal-container').hide()
@@ -157,6 +184,8 @@ function addressSearch() {
             }
 
             if (show_state) {
+                $('#state-container').show();
+                $('#state-nav').show();
                 if (state_people.length == 0)
                     $('#state-container').hide();
                 $('#state-results tbody').append(template.render({people: state_people}));

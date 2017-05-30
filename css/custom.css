@@ -68,3 +68,12 @@ h1 a, h1 a:hover {
 #contactModal {
     font-size: 0.9em;
 }
+
+.filter_level label {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#results-nav span {
+    padding-right: 20px;
+}

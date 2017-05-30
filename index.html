@@ -13,7 +13,23 @@ layout: default
                 <button class="btn btn-default" type="submit" id="find-me"><i class='fa fa-crosshairs'></i> <span class='hidden-xs hidden-sm'>Find me</span> </button>
             </span>
         </div>
-
+        <div class='col-sm-8 col-sm-offset-2 filter_level'>
+            <br /><p class='text-center'>
+                Show level of government:
+                <label>
+                    <input type="checkbox" id="show_local_results" value="Local"> Local
+                </label>
+                <label>
+                    <input type="checkbox" id="show_county_results" value="County"> County
+                </label>
+                <label>
+                    <input type="checkbox" id="show_state_results" value="State"> State
+                </label>
+                <label>
+                    <input type="checkbox" id="show_federal_results" value="Federal"> Federal
+                </label>
+            </p>
+        </div>
         <br />
     </div>
 </div>
@@ -35,19 +51,15 @@ layout: default
                 Levels of government<br />
                   <span id='local-nav' style='display: none;'>
                     <a id="local-name-nav" href="#local-name"></a>
-                    &nbsp;
                   </span>
                   <span id='county-nav' style='display: none;'>
-                    &nbsp;
                     <a id="county-name-nav" href="#county-name"></a>
-                    <i class='fa fa-long-arrow-right'></i>
                   </span>
                   <span id='state-nav' style='display: none;'>
                     <a id="state-name-nav" href="#state-name"></a>
-                    <i class='fa fa-long-arrow-right'></i>
                   </span>
                   <span id='fed-nav'>
-                    <a href="#federal-name">Federal</a></li>
+                    <a id="federal-name-nav" href="#federal-name">Federal</a></li>
                   </span>
                   
                 </ul>
@@ -310,6 +322,20 @@ layout: default
       $('#address-search').click(function(){
         addressSearch();
       });
+
+      var results_level = $.address.parameter('results_level');
+      if (results_level == undefined)
+        results_level = ['local', 'county', 'state', 'federal'];
+      
+      // set levels of government checkboxes
+      if ($.inArray("local", results_level) >= 0)
+        $('#show_local_results').prop('checked', true);
+      if ($.inArray("county", results_level) >= 0)
+        $('#show_county_results').prop('checked', true);
+      if ($.inArray("state", results_level) >= 0)
+        $('#show_state_results').prop('checked', true);
+      if ($.inArray("federal", results_level) >= 0)
+        $('#show_federal_results').prop('checked', true);
 
       $("#results-nav a").click(function(e) {
         e.preventDefault();
