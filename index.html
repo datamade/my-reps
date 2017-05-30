@@ -313,7 +313,7 @@ layout: default
 
     $(function() {
 
-      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'));
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'), {types: ['address']});
 
       $("#address").val(convertToPlainString($.address.parameter('address')));
       if ($("#address").val())
@@ -326,6 +326,8 @@ layout: default
       var results_level = $.address.parameter('results_level');
       if (results_level == undefined)
         results_level = ['local', 'county', 'state', 'federal'];
+
+      // console.log(results_level)
       
       // set levels of government checkboxes
       if ($.inArray("local", results_level) >= 0)

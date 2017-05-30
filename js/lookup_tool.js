@@ -41,24 +41,26 @@ function addressSearch() {
     var show_state   = false;
     var show_federal = false;
 
-    $.address.parameter('results_level', '');
+    var results_level_set = [];
     // set levels from checkboxes
     if ($('#show_local_results').is(':checked')) {
         show_local = true;
-        $.address.parameter('results_level', 'local', true);
+        results_level_set.push('local');
     }
     if ($('#show_county_results').is(':checked')) {
         show_county = true;
-        $.address.parameter('results_level', 'county', true);
+        results_level_set.push('county');
     }
     if ($('#show_state_results').is(':checked')) {
         show_state = true;
-        $.address.parameter('results_level', 'state', true);
+        results_level_set.push('state');
     }
     if ($('#show_federal_results').is(':checked')) {
         show_federal = true;
-        $.address.parameter('results_level', 'federal', true);
+        results_level_set.push('federal');
     }
+
+    $.address.parameter('results_level', results_level_set);
 
     // console.log('doin search')
     // console.log('local: ' + show_local)
@@ -213,7 +215,7 @@ function addressSearch() {
                 $('#county-nav').hide();
             }  
 
-            if (show_local) {       
+            if (show_local) {    
                 if (local_people.length == 0) {
                     $('#local-container').hide();
                     if (selected_local == '')
