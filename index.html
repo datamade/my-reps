@@ -326,17 +326,15 @@ layout: default
       var results_level = $.address.parameter('results_level');
       if (results_level == undefined)
         results_level = ['local', 'county', 'state', 'federal'];
-
-      // console.log(results_level)
       
       // set levels of government checkboxes
-      if ($.inArray("local", results_level) >= 0)
+      if (results_level.indexOf("local") >= 0)
         $('#show_local_results').prop('checked', true);
-      if ($.inArray("county", results_level) >= 0)
+      if (results_level.indexOf("county")  >= 0)
         $('#show_county_results').prop('checked', true);
-      if ($.inArray("state", results_level) >= 0)
+      if (results_level.indexOf("state")  >= 0)
         $('#show_state_results').prop('checked', true);
-      if ($.inArray("federal", results_level) >= 0)
+      if (results_level.indexOf("federal")  >= 0)
         $('#show_federal_results').prop('checked', true);
 
       $("#results-nav a").click(function(e) {
