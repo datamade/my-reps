@@ -10,7 +10,7 @@ var county_pattern = /ocd-division\/country:us\/state:\D{2}\/county:\D+/;
 var local_pattern = /ocd-division\/country:us\/state:\D{2}\/place:\D+/;
 var district_pattern = /ocd-division\/country:us\/district:\D+/;
 
-var federal_offices = ['United States Senate', 'United States House of Representatives']
+var federal_offices = ['United States Senate', 'United States House of Representatives', 'U.S. Senator', 'U.S. Representative']
 
 var social_icon_lookup = {
     'YouTube': 'youtube',
