@@ -4,7 +4,7 @@ My Reps helps you locate and contact your federal, state, county and local elect
 
 For more, read our launch blog post: "[We find your reps so you don't have to](https://datamade.us/blog/we-find-your-reps-so-you-dont-have-to)".
 
-**Custom installations**: If you would like assistance setting up a customized version of this tool, contact DataMade: [info@datamade.us](mailto:info@datamade.us?subject=My Reps custom installation)
+**Custom installations**: If you would like assistance setting up a customized version of this tool, contact DataMade: info@datamade.us
 
 ## Demo site: [myreps.datamade.us](http://myreps.datamade.us)
 
