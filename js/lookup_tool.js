@@ -1,3 +1,4 @@
+var DEBUG = false;
 var geocoder = new google.maps.Geocoder;
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
 
@@ -62,11 +63,13 @@ function addressSearch() {
 
     $.address.parameter('results_level', results_level_set);
 
-    // console.log('doin search')
-    // console.log('local: ' + show_local)
-    // console.log('county: ' + show_county)
-    // console.log('state: ' + show_state)
-    // console.log('federal: ' + show_federal)
+    if (DEBUG) {
+        console.log('doin search')
+        console.log('local: ' + show_local)
+        console.log('county: ' + show_county)
+        console.log('state: ' + show_state)
+        console.log('federal: ' + show_federal)
+    }
     var address = $('#address').val();
     $.address.parameter('address', encodeURIComponent(address));
 
@@ -92,8 +95,10 @@ function addressSearch() {
         var county_people = [];
         var local_people = [];
 
-        // console.log(data);
-        // console.log(divisions);
+        if (DEBUG) {
+            console.log(data);
+            console.log(divisions);
+        }
 
         if (divisions === undefined) {
             $("#no-response-container").show();
@@ -103,7 +108,7 @@ function addressSearch() {
             setFoundDivisions(divisions);
 
             $.each(divisions, function(division_id, division){
-                // console.log(division.name);
+                if (DEBUG) console.log(division.name);
                 if (typeof division.officeIndices !== 'undefined'){
                     
                     $.each(division.officeIndices, function(i, office){
@@ -122,7 +127,7 @@ function addressSearch() {
                                 'pseudo_id': pseudo_id
                             };
 
-                            // console.log(officials[official])
+                            if (DEBUG) console.log(officials[official])
                             var person = officials[official];
                             info['person'] = person;
 
@@ -171,8 +176,6 @@ function addressSearch() {
                     });
                 }
             });
-
-            $("#address-image").html("<img class='img-responsive img-thumbnail' src='https://maps.googleapis.com/maps/api/staticmap?size=600x200&maptype=roadmap&markers=" + encodeURIComponent(address) + "' alt='" + address + "' title='" + address + "' />");
 
             var template = new EJS({'text': $('#tableGuts').html()});
             
@@ -258,7 +261,7 @@ function findMe() {
             var accuracy = position.coords.accuracy;
             var coords = new google.maps.LatLng(latitude, longitude);
 
-            // console.log(coords);
+            if (DEBUG) console.log(coords);
 
             geocoder.geocode({
                 'location': coords
@@ -290,7 +293,7 @@ function setFoundDivisions(divisions){
     $("#county-nav").hide();
     $("#local-nav").hide();
 
-    // console.log(divisions)
+    if (DEBUG) console.log(divisions)
     $.each(divisions, function(division_id, division){
         if (state_pattern.test(division_id)) {
             selected_state = division.name;
