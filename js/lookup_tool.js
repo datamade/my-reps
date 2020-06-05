@@ -1,4 +1,3 @@
-var DEBUG = false;
 var geocoder = new google.maps.Geocoder;
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
 

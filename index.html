@@ -307,18 +307,13 @@ layout: default
 <script src="js/lookup_tool.js"></script>
 <script type='text/javascript'>
   //<![CDATA[
+    var DEBUG = false;
 
     $(function() {
 
       var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'), {types: ['address']});
 
       $("#address").val(convertToPlainString($.address.parameter('address')));
-      if ($("#address").val())
-        addressSearch();
-      
-      $('#address-search').click(function(){
-        addressSearch();
-      });
 
       var results_level = $.address.parameter('results_level');
       if (results_level == undefined)
@@ -353,6 +348,15 @@ layout: default
               $('#address-search').click();
               return false;
           }
+      });
+
+      if ($("#address").val()) {
+        if (DEBUG) console.log("search on load")
+        addressSearch();
+      }
+      
+      $('#address-search').click(function(){
+        addressSearch();
       });
     });
   //]]>
