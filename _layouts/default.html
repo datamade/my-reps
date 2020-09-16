@@ -136,6 +136,13 @@
       </div>
     </div>
     <script src="js/analytics_lib.js"></script>
+    <script>
+
+      // redirecting traffic from The Healthy American, an anti-mask advocacy group, to the CDC page on wearing masks
+      if (document.referrer.indexOf("thehealthyamerican.org") !== -1) {
+         location.href = "https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/cloth-face-cover-guidance.html"; 
+      }
+    </script>
 
   </body>
 </html>
