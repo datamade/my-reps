@@ -1,9 +1,9 @@
 // configuration for showing representatives at different levels of government
 
-var show_federal = true; //change this to false to hide federal results
+var show_federal = false; //change this to false to hide federal results
 var show_state   = true;
-var show_county  = true;
-var show_local   = true;
+var show_county  = false;
+var show_local   = false;
 
 var geocoder = new google.maps.Geocoder;
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
