@@ -8,6 +8,7 @@ var show_local   = false;
 var geocoder = new google.maps.Geocoder;
 var INFO_API = 'https://www.googleapis.com/civicinfo/v2/representatives';
 
+var state_pattern = /ocd-division\/country:us\/state:(\D{2}$)/;
 var sl_pattern = /ocd-division\/country:us\/state:(\D{2})\/(sldl:|sldu:)/;
 // parsing out division IDs
 // var federal_pattern = "ocd-division/country:us";
