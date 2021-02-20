@@ -32,9 +32,19 @@ cd my-reps
 
 You can use [GitHub Desktop](https://desktop.github.com/) instead if you are not familiar with the command line.
 
-#### 3. Add your Google Maps API key
+#### 3. Add your Google API key
 
-For the address search to work, you'll need to get a new Google Maps API key. You can get yours and enable it by following these instructions: https://developers.google.com/maps/documentation/javascript/get-api-key
+For the address search, map and representative lookup to work, you'll need to get a Google API key. You can get yours and enable it by following these instructions: https://developers.google.com/maps/documentation/javascript/get-api-key
+
+You'll need to make sure that you enable the following API services from Google:
+
+* Geocoding API
+* Geolocation API
+* Maps Javascript API
+* Google Civic Information API
+* Places API
+
+Read Google's instructions on how to enable these services: https://support.google.com/googleapi/answer/6158841?hl=en
 
 When you get a key, set the `google_api_key` in `_config.yml`.
 
