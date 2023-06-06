@@ -135,14 +135,29 @@
         </div>
       </div>
     </div>
-    <script src="js/analytics_lib.js"></script>
-    <script>
 
+    <script>
       // redirecting traffic from The Healthy American, an anti-mask advocacy group, to the CDC page on wearing masks
       if (document.referrer.indexOf("thehealthyamerican.org") !== -1) {
          location.href = "https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/cloth-face-cover-guidance.html"; 
       }
     </script>
+
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://datamade.matomo.cloud/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '5']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='//cdn.matomo.cloud/datamade.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
 
   </body>
 </html>
