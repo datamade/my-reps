@@ -44,12 +44,12 @@ function addressSearch() {
     var results_level_set = [];
     // set levels from checkboxes
     if ($('#show_local_results').is(':checked')) {
-        show_local = true;
-        results_level_set.push('local');
+        // show_local = true;
+        // results_level_set.push('local');
     }
     if ($('#show_county_results').is(':checked')) {
-        show_county = true;
-        results_level_set.push('county');
+        // show_county = true;
+        // results_level_set.push('county');
     }
     if ($('#show_state_results').is(':checked')) {
         show_state = true;
