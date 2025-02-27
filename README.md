@@ -1,5 +1,13 @@
 # My Reps
 
+## My Reps will stop working in April 2025
+
+The Google Civic Information API, which powers this website, will [shut down in April 2025](https://groups.google.com/g/google-civicinfo-api/c/9fwFn-dhktA) and My Reps will stop working.
+
+We recommend you switch to one of these free tools: [BallotReady](https://www.ballotready.org/), [Elected Officials & Districts by Cicero](https://live.cicerodata.com/live/local), [Who Represents Me? by BallotPedia](https://ballotpedia.org/Who_represents_me).
+
+## About My Reps
+
 My Reps helps you locate and contact your federal, state, county and local elected representatives. Based on [my-reps-pbp](https://github.com/datamade/my-reps-pbp) by [DataMade](https://datamade.us/) and [Participatory Budgeting Project](http://participatorybudgeting.org/). Powered by the [Google Civic Information API](https://developers.google.com/civic-information/).
 
 For more, read our launch blog post: "[We find your reps so you don't have to](https://datamade.us/blog/we-find-your-reps-so-you-dont-have-to)".
