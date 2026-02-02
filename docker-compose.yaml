@@ -1,0 +1,16 @@
+version: '2.4'
+services:
+  jekyll:
+    build: .
+    volumes:
+      - ./:/usr/local/src
+    working_dir: /usr/local/src
+    ports:
+      - 5000:5000
+    environment:
+      - JEKYLL_ENV=development
+    entrypoint: jekyll
+    command:
+      - serve
+      - -w
+      - --host=0.0.0.0
